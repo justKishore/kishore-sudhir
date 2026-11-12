@@ -12,6 +12,10 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Tooling, not site code
+    ".claude/**",
+    ".agents/**",
+    "kish-portfolio-kit/**",
   ]),
 ]);
 

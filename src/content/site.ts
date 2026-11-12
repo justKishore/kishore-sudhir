@@ -4,6 +4,10 @@ export const site = {
   name: "Kishore Sudhir",
   shortName: "Kish",
   timezone: "Australia/Melbourne",
+  views: [
+    { id: "work", label: "Work", wipe: "Work." },
+    { id: "about", label: "About", wipe: "About." },
+  ],
   hero: {
     lines: ["Data and AI work", "that {holds up} in production"], // {} = accent word
     note: "[Placeholder: confirm headline]",

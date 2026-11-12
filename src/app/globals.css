@@ -1,28 +1,58 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
+@import "lenis/dist/lenis.css";
 
-@custom-variant dark (&:is(.dark *));
-
+/* ------------------------------------------------------------------
+   Design tokens: design-reference/DESIGN_SPEC.md is the source.
+   ------------------------------------------------------------------ */
 @theme inline {
+  /* Colour */
+  --color-deep-blue: #134074;
+  --color-navy: #13315c;
+  --color-night: #0b2545;
+  --color-mist: #8da9c4;
+  --color-secondary-text: #c9d6e2;
+  --color-paper: #eef4ed;
+  --color-status: #4ade80;
+
+  /* Type families (variables set by next/font in layout.tsx) */
+  --font-sans: var(--font-geist);
+  --font-mono: var(--font-geist-mono);
+  --font-display: var(--font-playfair);
+  --font-heading: var(--font-playfair);
+
+  /* Fluid type scale */
+  --text-display: clamp(46px, 11vw, 210px);
+  --text-hero: clamp(34px, 6.4vw, 116px);
+  --text-h2: clamp(36px, 5.6vw, 84px);
+  --text-statement: clamp(28px, 4.2vw, 64px);
+  --text-h3: clamp(28px, 3.4vw, 52px);
+  --text-lead: clamp(18px, 1.4vw, 22px);
+  --text-body: 17px;
+  --text-small: 15px;
+  --text-label: 12px;
+
+  /* Radii */
+  --radius-input: 12px;
+  --radius-image: 16px;
+  --radius-status: 20px;
+  --radius-card: 28px;
+  --radius-pill: 999px;
+
+  /* Shadows */
+  --shadow-card: 0 30px 60px rgba(11, 37, 69, 0.35);
+  --shadow-lift: 0 -18px 50px rgba(11, 37, 69, 0.5);
+  --shadow-glow: 0 0 14px 3px rgba(141, 169, 196, 0.85);
+
+  /* Motion */
+  --ease-reveal: cubic-bezier(0.2, 0.7, 0.1, 1);
+  --ease-wipe: cubic-bezier(0.65, 0, 0.2, 1);
+  --ease-out-strong: cubic-bezier(0.23, 1, 0.32, 1);
+
+  /* shadcn bridge */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-sans);
-  --font-mono: var(--font-geist-mono);
-  --font-heading: var(--font-sans);
-  --color-sidebar-ring: var(--sidebar-ring);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar: var(--sidebar);
-  --color-chart-5: var(--chart-5);
-  --color-chart-4: var(--chart-4);
-  --color-chart-3: var(--chart-3);
-  --color-chart-2: var(--chart-2);
-  --color-chart-1: var(--chart-1);
   --color-ring: var(--ring);
   --color-input: var(--input);
   --color-border: var(--border);
@@ -43,88 +73,137 @@
   --radius-md: calc(var(--radius) * 0.8);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) * 1.4);
-  --radius-2xl: calc(var(--radius) * 1.8);
-  --radius-3xl: calc(var(--radius) * 2.2);
-  --radius-4xl: calc(var(--radius) * 2.6);
 }
 
 :root {
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
-  --chart-1: oklch(0.87 0 0);
-  --chart-2: oklch(0.556 0 0);
-  --chart-3: oklch(0.439 0 0);
-  --chart-4: oklch(0.371 0 0);
-  --chart-5: oklch(0.269 0 0);
-  --radius: 0.625rem;
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
-}
+  --gutter: clamp(16px, 5vw, 80px);
+  --content-max: 1440px;
+  --hero-max: 1600px;
+  --page-gradient: linear-gradient(180deg, #134074 0%, #13315c 42%, #0b2545 100%);
+  --accent-gradient: linear-gradient(100deg, #eef4ed 0%, #c9d6e2 45%, #8da9c4 100%);
 
-.dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.205 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.922 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.556 0 0);
-  --chart-1: oklch(0.87 0 0);
-  --chart-2: oklch(0.556 0 0);
-  --chart-3: oklch(0.439 0 0);
-  --chart-4: oklch(0.371 0 0);
-  --chart-5: oklch(0.269 0 0);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.556 0 0);
+  /* shadcn variables mapped onto the palette (React Bits components read these) */
+  --background: #0b2545;
+  --foreground: #eef4ed;
+  --card: #13315c;
+  --card-foreground: #eef4ed;
+  --popover: #13315c;
+  --popover-foreground: #eef4ed;
+  --primary: #eef4ed;
+  --primary-foreground: #0b2545;
+  --secondary: #13315c;
+  --secondary-foreground: #eef4ed;
+  --muted: #13315c;
+  --muted-foreground: #c9d6e2;
+  --accent: #134074;
+  --accent-foreground: #eef4ed;
+  --destructive: #f87171;
+  --border: rgba(238, 244, 237, 0.22);
+  --input: rgba(238, 244, 237, 0.22);
+  --ring: #8da9c4;
+  --radius: 12px;
+
+  color-scheme: dark;
 }
 
 @layer base {
   * {
-    @apply border-border outline-ring/50;
+    @apply border-border;
   }
-  body {
-    @apply bg-background text-foreground;
-  }
+
   html {
-    @apply font-sans;
+    background: var(--color-night);
+    -webkit-text-size-adjust: 100%;
+    scrollbar-color: rgba(141, 169, 196, 0.45) var(--color-night);
+  }
+
+  body {
+    background: var(--color-night);
+    color: var(--color-paper);
+    font-family: var(--font-sans);
+    font-size: var(--text-body);
+    line-height: 1.6;
+    caret-color: var(--color-paper);
+    font-variant-numeric: tabular-nums;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background: var(--color-mist);
+    color: var(--color-night);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-paper);
+    outline-offset: 3px;
+  }
+
+  a {
+    text-underline-offset: 0.2em;
+    text-decoration-thickness: 1px;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    text-wrap: balance;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--color-night);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(141, 169, 196, 0.45);
+    border-radius: 999px;
+    border: 2px solid var(--color-night);
+  }
+}
+
+/* ------------------------------------------------------------------
+   Shared building blocks
+   ------------------------------------------------------------------ */
+@layer components {
+  /* Each view runs deep-blue -> navy -> night, top to bottom */
+  .view-bg {
+    background: var(--page-gradient);
+  }
+
+  /* Accent words: italic Playfair with gradient fill */
+  .accent {
+    font-family: var(--font-display);
+    font-style: italic;
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    padding-right: 0.06em;
+  }
+
+  .label {
+    font-family: var(--font-mono);
+    font-size: var(--text-label);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--color-secondary-text);
+    line-height: 1.4;
+  }
+
+  /* Glass: the fill alone keeps text readable where blur is unsupported */
+  .glass {
+    background: rgba(11, 37, 69, 0.5);
+    border: 1px solid rgba(238, 244, 237, 0.22);
+    -webkit-backdrop-filter: blur(18px) saturate(1.2);
+    backdrop-filter: blur(18px) saturate(1.2);
+  }
+
+  .gutter {
+    padding-inline: var(--gutter);
   }
 }
