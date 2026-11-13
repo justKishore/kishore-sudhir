@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="047bdc30-15af-4262-ae5b-c7197d91d69e"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+<style>/* cyrillic-ext */
+@font-face {
+  font-family: 'Geist';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("1c676a9f-de99-409b-aaf7-b28da33de994") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Geist';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("aa5df0a0-0964-4b67-ac13-ad357384eb65") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Geist';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("71579f74-ea03-41f9-b1e0-199d5f543d1c") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Geist';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("6bb7ebb0-422c-43ad-b913-8b18b89b48f0") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Geist';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("f988d814-f41a-45a0-b38b-85279a5c44c8") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Geist';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("1c676a9f-de99-409b-aaf7-b28da33de994") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Geist';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("aa5df0a0-0964-4b67-ac13-ad357384eb65") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Geist';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("71579f74-ea03-41f9-b1e0-199d5f543d1c") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Geist';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("6bb7ebb0-422c-43ad-b913-8b18b89b48f0") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Geist';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("f988d814-f41a-45a0-b38b-85279a5c44c8") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Geist';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("1c676a9f-de99-409b-aaf7-b28da33de994") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Geist';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("aa5df0a0-0964-4b67-ac13-ad357384eb65") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Geist';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("71579f74-ea03-41f9-b1e0-199d5f543d1c") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Geist';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("6bb7ebb0-422c-43ad-b913-8b18b89b48f0") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Geist';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("f988d814-f41a-45a0-b38b-85279a5c44c8") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Geist';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("1c676a9f-de99-409b-aaf7-b28da33de994") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Geist';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("aa5df0a0-0964-4b67-ac13-ad357384eb65") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Geist';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("71579f74-ea03-41f9-b1e0-199d5f543d1c") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Geist';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("6bb7ebb0-422c-43ad-b913-8b18b89b48f0") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Geist';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("f988d814-f41a-45a0-b38b-85279a5c44c8") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("36d7cd8c-fd10-4d2e-beb0-394f1a5af4e5") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("c6aa9fc1-28fc-4923-8f85-94111a137b77") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* symbols2 */
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("01039608-afc3-40ba-a9c7-a531dc8b7baf") format('woff2');
+  unicode-range: U+2000-2001, U+2004-2008, U+200A, U+23B8-23BD, U+2500-259F;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("ffb1ce5a-3742-4868-bd9d-1c5182a0bf03") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("3dc9d80d-8651-4b43-b536-db8a35412bc4") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("b8486848-e5d2-4334-aefd-17704ac22efe") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("36d7cd8c-fd10-4d2e-beb0-394f1a5af4e5") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("c6aa9fc1-28fc-4923-8f85-94111a137b77") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* symbols2 */
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("01039608-afc3-40ba-a9c7-a531dc8b7baf") format('woff2');
+  unicode-range: U+2000-2001, U+2004-2008, U+200A, U+23B8-23BD, U+2500-259F;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("ffb1ce5a-3742-4868-bd9d-1c5182a0bf03") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("3dc9d80d-8651-4b43-b536-db8a35412bc4") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("b8486848-e5d2-4334-aefd-17704ac22efe") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Playfair Display';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/playfairdisplay/v40/nuFkD-vYSZviVYUb_rj3ij__anPXDTnohkk72xU.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Playfair Display';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/playfairdisplay/v40/nuFkD-vYSZviVYUb_rj3ij__anPXDTnojUk72xU.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Playfair Display';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/playfairdisplay/v40/nuFkD-vYSZviVYUb_rj3ij__anPXDTnojEk72xU.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Playfair Display';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/playfairdisplay/v40/nuFkD-vYSZviVYUb_rj3ij__anPXDTnogkk7.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Playfair Display';
+  font-style: italic;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/playfairdisplay/v40/nuFkD-vYSZviVYUb_rj3ij__anPXDTnohkk72xU.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Playfair Display';
+  font-style: italic;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/playfairdisplay/v40/nuFkD-vYSZviVYUb_rj3ij__anPXDTnojUk72xU.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Playfair Display';
+  font-style: italic;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/playfairdisplay/v40/nuFkD-vYSZviVYUb_rj3ij__anPXDTnojEk72xU.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Playfair Display';
+  font-style: italic;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/playfairdisplay/v40/nuFkD-vYSZviVYUb_rj3ij__anPXDTnogkk7.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Playfair Display';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/playfairdisplay/v40/nuFiD-vYSZviVYUb_rj3ij__anPXDTjYgFE_.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Playfair Display';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/playfairdisplay/v40/nuFiD-vYSZviVYUb_rj3ij__anPXDTPYgFE_.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Playfair Display';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/playfairdisplay/v40/nuFiD-vYSZviVYUb_rj3ij__anPXDTLYgFE_.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Playfair Display';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/playfairdisplay/v40/nuFiD-vYSZviVYUb_rj3ij__anPXDTzYgA.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Playfair Display';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/playfairdisplay/v40/nuFiD-vYSZviVYUb_rj3ij__anPXDTjYgFE_.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Playfair Display';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/playfairdisplay/v40/nuFiD-vYSZviVYUb_rj3ij__anPXDTPYgFE_.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Playfair Display';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/playfairdisplay/v40/nuFiD-vYSZviVYUb_rj3ij__anPXDTLYgFE_.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Playfair Display';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/playfairdisplay/v40/nuFiD-vYSZviVYUb_rj3ij__anPXDTzYgA.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+</style>
+<style>
+html,body{margin:0;background:#0B2545}
+*{box-sizing:border-box}
+a{color:#EEF4ED;text-decoration-color:rgba(141,169,196,.6);text-underline-offset:4px}
+a:hover{color:#C9D6E2}
+input::placeholder,textarea::placeholder{color:#8DA9C4;opacity:1}
+button{font-family:inherit}
+.hz-outer{height:300vh}
+.hz-sticky{position:sticky;top:0;height:100vh;overflow:hidden;display:flex;flex-direction:column;justify-content:center;gap:40px}
+.hz-track{display:flex;gap:24px;padding:0 clamp(16px,5vw,80px);will-change:transform}
+.hz-card{flex:none;width:min(460px,78vw)}
+@media (max-width:767px),(prefers-reduced-motion:reduce){
+.hz-outer{height:auto}
+.hz-sticky{position:relative;height:auto;padding:96px 0}
+.hz-track{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+.hz-card{width:auto}
+}
+.rm .hz-outer{height:auto}
+.rm .hz-sticky{position:relative;height:auto;padding:96px 0}
+.rm .hz-track{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+.rm .hz-card{width:auto}
+.gb-outer{height:300vh}
+.gb-sticky{position:sticky;top:0;height:100vh;display:flex;flex-direction:column;justify-content:center}
+.gb-tap{display:none}
+@media (max-width:819px){.gb-outer{height:auto}.gb-sticky{position:relative;height:auto}.gb-tap{display:flex}}
+@media (prefers-reduced-motion:reduce){.gb-outer{height:auto}.gb-sticky{position:relative;height:auto}.gb-tap{display:none}}
+.rm .gb-outer{height:auto}
+.rm .gb-sticky{position:relative;height:auto}
+.rm .gb-tap{display:none}
+</style>
+</helmet>
+<div class="{{ rootClass }}" style="background:#0B2545;color:#EEF4ED;font-family:'Geist',Helvetica,Arial,sans-serif;font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;min-height:100vh;overflow-x:hidden;overflow-x:clip">
+
+<header style="position:fixed;top:0;left:0;right:0;z-index:40;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px clamp(16px,5vw,80px)">
+  <a href="#work" sc-camel-on-click="{{ workClick }}" style="font-family:'Playfair Display',Georgia,serif;font-style:italic;font-size:22px;color:#EEF4ED;text-decoration:none;text-shadow:0 1px 12px rgba(11,37,69,.6)">Kishore Sudhir</a>
+  <nav style="display:flex;gap:4px;padding:4px;border-radius:999px;background:rgba(11,37,69,.55);border:1px solid rgba(141,169,196,.28);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)">
+    <button sc-camel-on-click="{{ workClick }}" style="min-height:44px;padding:0 20px;border:0;border-radius:999px;font-size:15px;font-weight:500;cursor:pointer;transition:background .3s,color .3s;background:{{ workBg }};color:{{ workFg }}">Work</button>
+    <button sc-camel-on-click="{{ aboutClick }}" style="min-height:44px;padding:0 20px;border:0;border-radius:999px;font-size:15px;font-weight:500;cursor:pointer;transition:background .3s,color .3s;background:{{ aboutBg }};color:{{ aboutFg }}">About</button>
+  </nav>
+</header>
+
+<sc-if value="{{ isWork }}" hint-placeholder-val="{{ true }}">
+<main data-screen-label="Work">
+
+<section data-hero="1" data-screen-label="Work hero" style="position:relative;min-height:100vh;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;background:#134074">
+  <div data-par="1" style="position:absolute;left:0;right:0;top:-6%;height:112%;background-image:url(&quot;a424f996-ce45-4df0-93a3-8faf98c2fcb2&quot;);background-size:cover;background-position:50% 60%;transform-origin:50% 60%;will-change:transform"></div>
+  <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,37,69,.5) 0%,rgba(11,37,69,.18) 30%,rgba(11,37,69,.55) 62%,rgba(19,64,116,.94) 92%,#134074 100%)"></div>
+  <div data-dark="1" style="position:absolute;inset:0;background:linear-gradient(180deg,#0B2545 0%,#13315C 55%,#134074 100%);opacity:0"></div>
+  <div data-herotext="1" style="position:relative;width:100%;max-width:1600px;margin:0 auto;padding:120px clamp(16px,5vw,80px) 104px;display:flex;flex-direction:column;gap:clamp(24px,4vw,48px)">
+    <h1 style="margin:0;font-family:'Playfair Display',Georgia,serif;font-weight:400;font-size:clamp(34px,6.4vw,116px);line-height:1.06;letter-spacing:-.015em;text-shadow:0 2px 30px rgba(11,37,69,.5)">
+      <span style="display:block;overflow:hidden;padding-bottom:.12em"><span data-reveal="0" style="display:block;transform:translateY(115%)">Data and AI work</span></span>
+      <span style="display:block;overflow:hidden;padding-bottom:.16em"><span data-reveal="1" style="display:block;transform:translateY(115%)">that <em style="font-style:italic;padding-right:.06em;background:linear-gradient(100deg,#EEF4ED 0%,#C9D6E2 45%,#8DA9C4 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:#EEF4ED;text-shadow:none">holds up</em> in production</span></span>
+    </h1>
+    <div style="font-family:'Geist Mono',monospace;font-size:12px;color:#C9D6E2;margin-top:-12px">[Placeholder: confirm headline]</div>
+    <div data-reveal="3" style="display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:20px;opacity:0;transform:translateY(24px)">
+      <div style="max-width:440px;padding:18px 22px;border-radius:20px;background:rgba(11,37,69,.5);border:1px solid rgba(238,244,237,.22);backdrop-filter:blur(18px) saturate(1.2);-webkit-backdrop-filter:blur(18px) saturate(1.2);box-shadow:0 20px 50px rgba(11,37,69,.35)">
+        <div style="display:flex;align-items:center;gap:12px;font-weight:500;font-size:17px">
+          <span style="position:relative;width:10px;height:10px;flex:none"><span data-pulse="1" style="position:absolute;inset:0;border-radius:50%;background:#4ADE80;opacity:0"></span><span style="position:absolute;inset:0;border-radius:50%;background:#4ADE80"></span></span>
+          <span>Open to work now</span>
+        </div>
+        <div style="margin-top:8px;font-size:15px;line-height:1.5;color:#EEF4ED">Data engineering, AI adoption and automation roles. Anywhere in Australia, or remote.</div>
+      </div>
+      <div style="font-family:'Geist Mono',monospace;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:#EEF4ED;display:flex;gap:12px;align-items:baseline;text-shadow:0 1px 10px rgba(11,37,69,.7)">
+        <span style="color:#C9D6E2">Melbourne</span><span style="font-size:15px;font-variant-numeric:tabular-nums">{{ time }}</span>
+      </div>
+    </div>
+  </div>
+  <div style="position:absolute;left:50%;bottom:22px;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;font-family:'Geist Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#EEF4ED">
+    <span>Scroll</span>
+    <span style="position:relative;width:1px;height:34px;background:rgba(238,244,237,.3);overflow:hidden"><span data-cue="1" style="position:absolute;left:0;top:0;width:1px;height:12px;background:#EEF4ED"></span></span>
+  </div>
+</section>
+
+<div style="background:linear-gradient(180deg,#134074 0%,#13315C 42%,#0B2545 100%)">
+
+<section data-screen-label="Marquee" style="padding:clamp(40px,7vw,96px) 0;display:flex;flex-direction:column;gap:clamp(8px,1.4vw,20px);overflow:hidden">
+  <div style="overflow:hidden"><div data-mq="1" style="display:flex;width:max-content;white-space:nowrap;will-change:transform">
+    <sc-for list="{{ mq1 }}" as="m" hint-placeholder-count="8"><span style="display:flex;align-items:center;gap:clamp(20px,3vw,48px);padding-right:clamp(20px,3vw,48px);font-weight:500;font-size:clamp(28px,5vw,76px);letter-spacing:-.02em;line-height:1.2;color:#EEF4ED">{{ m }}<span style="width:.16em;height:.16em;border-radius:50%;background:#8DA9C4"></span></span></sc-for>
+  </div></div>
+  <div style="overflow:hidden"><div data-mq="-1" style="display:flex;width:max-content;white-space:nowrap;will-change:transform">
+    <sc-for list="{{ mq2 }}" as="m" hint-placeholder-count="8"><span style="display:flex;align-items:center;gap:clamp(20px,3vw,48px);padding-right:clamp(20px,3vw,48px);font-family:'Playfair Display',Georgia,serif;font-style:italic;font-size:clamp(28px,5vw,76px);line-height:1.2;color:transparent;-webkit-text-stroke:1px #C9D6E2">{{ m }}<span style="width:.16em;height:.16em;border-radius:50%;border:1px solid #C9D6E2"></span></span></sc-for>
+  </div></div>
+</section>
+
+<section data-screen-label="Statement" style="max-width:1280px;margin:0 auto;padding:clamp(72px,12vw,180px) clamp(16px,5vw,80px)">
+  <div style="font-family:'Geist Mono',monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#C9D6E2;margin-bottom:28px">How I work</div>
+  <p data-words="1" style="margin:0;font-size:clamp(28px,4.4vw,64px);line-height:1.18;letter-spacing:-.02em;font-weight:400">
+    <sc-for list="{{ words }}" as="w" hint-placeholder-count="20"><span data-word="1" style="display:inline-block;margin-right:.26em;opacity:.22">{{ w }}</span></sc-for>
+  </p>
+  
+</section>
+
+<section data-stat="1" data-screen-label="Stat" style="padding:clamp(72px,12vw,180px) clamp(16px,5vw,80px);display:flex;flex-direction:column;align-items:center;text-align:center;gap:clamp(28px,4vw,56px);overflow:hidden">
+  <div style="display:flex;flex-direction:column;align-items:center;gap:8px">
+    <div style="font-family:'Geist Mono',monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#C9D6E2">Time to send a quote, before</div>
+    <div style="position:relative;font-family:'Playfair Display',Georgia,serif;font-style:italic;font-size:clamp(46px,13vw,210px);line-height:1.1;white-space:nowrap;color:#8DA9C4">6 to 7 weeks
+      <span data-strike="1" style="position:absolute;left:-3%;right:-3%;top:56%;height:3px;border-radius:3px;background:#EEF4ED;box-shadow:0 0 14px 3px rgba(141,169,196,.85),0 0 46px 10px rgba(141,169,196,.4);transform:scaleX(0);transform-origin:0 50%"></span>
+    </div>
+  </div>
+  <div data-same="1" style="opacity:0;display:flex;flex-direction:column;align-items:center;gap:clamp(28px,4vw,56px)">
+    <div style="display:flex;flex-direction:column;align-items:center;gap:8px">
+      <div style="font-family:'Geist Mono',monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#C9D6E2">After</div>
+      <div style="font-family:'Playfair Display',Georgia,serif;font-style:italic;font-size:clamp(46px,13vw,210px);line-height:1.1;white-space:nowrap;padding:0 .08em;background:linear-gradient(100deg,#EEF4ED 10%,#C9D6E2 55%,#8DA9C4 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:#EEF4ED">Same day.</div>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:8px;max-width:600px">
+      <p style="margin:0;color:#C9D6E2;text-wrap:pretty">A quoting process that took 6 to 7 weeks now finishes the same day. I automated it with AI.</p>
+      <p style="margin:0;color:#C9D6E2;text-wrap:pretty">Do you have a process that takes this long?</p>
+    </div>
+    <a href="#contact" style="display:flex;align-items:center;gap:10px;min-height:56px;padding:0 32px;border-radius:999px;background:#EEF4ED;color:#0B2545;font-size:17px;font-weight:600;text-decoration:none;box-shadow:0 0 30px rgba(141,169,196,.45);transition:background .3s" style-hover="background:#C9D6E2;color:#0B2545">Book free consultation <span style="font-family:'Geist Mono',monospace">→</span></a>
+  </div>
+</section>
+
+<section data-screen-label="Selected work" style="max-width:1440px;margin:0 auto;padding:clamp(48px,8vw,120px) clamp(16px,5vw,80px) clamp(72px,10vw,160px)">
+  <div style="display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:clamp(28px,4vw,56px)">
+    <h2 style="margin:0;font-family:'Playfair Display',Georgia,serif;font-weight:400;font-size:clamp(36px,5.4vw,84px);line-height:1.05;letter-spacing:-.01em">Selected <em style="font-style:italic;padding-right:.06em;background:linear-gradient(100deg,#EEF4ED,#8DA9C4);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:#EEF4ED">work</em></h2>
+    <div style="font-family:'Geist Mono',monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#C9D6E2">Five projects</div>
+  </div>
+  <div style="display:flex;flex-direction:column;gap:clamp(32px,5vw,72px)">
+    <sc-for list="{{ projects }}" as="p" hint-placeholder-count="4">
+    <article data-card="1" style="position:sticky;top:110px;min-height:60vh;transform-origin:50% 0;will-change:transform;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));background:#13315C;border:1px solid rgba(141,169,196,.26);border-radius:28px;overflow:hidden;box-shadow:0 -18px 50px rgba(11,37,69,.5),0 30px 60px rgba(11,37,69,.35)">
+      <div style="padding:clamp(14px,2vw,28px)">
+        <div style="position:relative;height:100%;min-height:clamp(170px,30vw,420px);border-radius:16px;overflow:hidden;background-color:#134074;background-image:url('{{ p.img }}');background-repeat:no-repeat;background-size:cover;background-position:50% 50%"></div>
+      </div>
+      <div style="padding:clamp(20px,3.4vw,52px);display:flex;flex-direction:column;justify-content:space-between;gap:28px">
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <div style="font-family:'Geist Mono',monospace;font-size:12px;letter-spacing:.12em;color:#C9D6E2">{{ p.no }} / 05</div>
+          <h3 style="margin:0;font-family:'Playfair Display',Georgia,serif;font-weight:400;font-size:clamp(28px,3.4vw,52px);line-height:1.08">{{ p.title }}</h3>
+          <p style="margin:0;font-size:clamp(16px,1.3vw,19px);color:#C9D6E2;text-wrap:pretty">{{ p.summary }}</p>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:22px">
+          <div style="display:flex;flex-wrap:wrap;gap:8px">
+            <sc-for list="{{ p.tags }}" as="t" hint-placeholder-count="3"><span style="padding:5px 12px;border-radius:999px;border:1px solid rgba(141,169,196,.45);font-family:'Geist Mono',monospace;font-size:12px;color:#EEF4ED">{{ t }}</span></sc-for>
+          </div>
+        </div>
+      </div>
+      <div data-shade="1" style="position:absolute;inset:0;background:#0B2545;opacity:0;pointer-events:none"></div>
+    </article>
+    </sc-for>
+  </div>
+</section>
+</div>
+</main>
+</sc-if>
+
+<sc-if value="{{ isAbout }}" hint-placeholder-val="{{ false }}">
+<main data-screen-label="About">
+
+<section data-hero="1" data-screen-label="About hero" style="position:relative;min-height:max(62vh,420px);overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;background:#134074">
+  <div data-par="1" style="position:absolute;left:0;top:-60%;width:170%;height:175%;background-image:url(&quot;a424f996-ce45-4df0-93a3-8faf98c2fcb2&quot;);background-size:cover;background-position:0% 50%;transform-origin:20% 65%;will-change:transform"></div>
+  <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,37,69,.5) 0%,rgba(11,37,69,.15) 40%,rgba(19,64,116,.8) 86%,#134074 100%)"></div>
+  <div data-dark="1" style="position:absolute;inset:0;background:linear-gradient(180deg,#0B2545 0%,#13315C 55%,#134074 100%);opacity:0"></div>
+  <div data-herotext="1" style="position:relative;width:100%;max-width:1600px;margin:0 auto;padding:120px clamp(16px,5vw,80px) clamp(32px,5vw,64px)">
+    <div style="overflow:hidden;padding-bottom:.14em;font-size:clamp(64px,13vw,220px);line-height:1"><h1 data-reveal="0" style="margin:0;font:inherit;font-family:'Playfair Display',Georgia,serif;font-style:italic;font-weight:400;transform:translateY(115%);text-shadow:0 2px 30px rgba(11,37,69,.5)">About</h1></div>
+  </div>
+</section>
+
+<div style="background:linear-gradient(180deg,#134074 0%,#13315C 40%,#0B2545 100%)">
+
+<section data-screen-label="Bio" style="max-width:1440px;margin:0 auto;padding:clamp(56px,9vw,140px) clamp(16px,5vw,80px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:clamp(32px,6vw,96px)">
+  <div style="display:flex;flex-direction:column;gap:22px;font-size:clamp(18px,1.6vw,22px);line-height:1.6;text-wrap:pretty">
+    <p style="margin:0">I'm Kish, a Data Scientist and AI Engineer in Melbourne. I'm the person who asks "but why?" one too many times. I like problems that are messy, a little unclear, and worth figuring out properly.</p>
+    <p style="margin:0;color:#C9D6E2">Right now I'm open to new roles, collaborations and side projects. If you're working on something in sport analytics, AI research or improving how things run, I'm happy to volunteer my time. Let's talk.</p>
+  </div>
+  <dl style="margin:0;display:flex;flex-direction:column">
+    <div style="padding:18px 0 22px;border-top:1px solid rgba(141,169,196,.35);display:flex;flex-direction:column;gap:4px"><dt style="font-family:'Geist Mono',monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#C9D6E2">Experience</dt><dd style="margin:0;font-family:'Playfair Display',Georgia,serif;line-height:1.1;display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 16px"><em style="font-style:italic;font-size:clamp(48px,6vw,92px);padding-right:.06em;background:linear-gradient(100deg,#EEF4ED,#8DA9C4);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:#EEF4ED">3+ years</em><span style="font-size:clamp(22px,2.2vw,32px)">in industry</span></dd></div>
+    <div style="padding:18px 0;border-top:1px solid rgba(141,169,196,.35);display:flex;flex-direction:column;gap:4px"><dt style="font-family:'Geist Mono',monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#C9D6E2">Based in</dt><dd style="margin:0;font-family:'Playfair Display',Georgia,serif;font-size:clamp(22px,2.2vw,32px);line-height:1.2">Melbourne</dd></div>
+    <div style="padding:18px 0;border-top:1px solid rgba(141,169,196,.35);display:flex;flex-direction:column;gap:4px"><dt style="font-family:'Geist Mono',monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#C9D6E2">Study</dt><dd style="margin:0;font-family:'Playfair Display',Georgia,serif;font-size:clamp(22px,2.2vw,32px);line-height:1.2">Master of Data Science, RMIT University</dd></div>
+    <div style="padding:18px 0;border-top:1px solid rgba(141,169,196,.35);border-bottom:1px solid rgba(141,169,196,.35);display:flex;flex-direction:column;gap:4px"><dt style="font-family:'Geist Mono',monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#C9D6E2">Background</dt><dd style="margin:0;font-family:'Playfair Display',Georgia,serif;font-size:clamp(22px,2.2vw,32px);line-height:1.2">Computer science, Anna University</dd></div>
+  </dl>
+</section>
+
+<section class="gb-outer" data-gbwrap="1" data-screen-label="Gradient boosting">
+  <div class="gb-sticky" style="max-width:1440px;margin:0 auto;padding:88px clamp(16px,5vw,80px) 24px">
+  <div style="border-radius:28px;border:1px solid rgba(141,169,196,.26);background:rgba(11,37,69,.45);padding:clamp(18px,2.6vw,36px);display:flex;flex-direction:column;gap:clamp(12px,1.6vw,22px);box-shadow:0 30px 70px rgba(11,37,69,.35)">
+    <div style="display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:16px">
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <div style="font-family:'Geist Mono',monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#C9D6E2">Gradient boosting</div>
+        <h2 style="margin:0;font-family:'Playfair Display',Georgia,serif;font-weight:400;font-size:clamp(28px,3.4vw,50px);line-height:1.1">Small steps in the right <em style="font-style:italic;padding-right:.06em;background:linear-gradient(100deg,#EEF4ED,#8DA9C4);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:#EEF4ED">direction</em></h2>
+        <p style="margin:0;color:#EEF4ED;font-size:clamp(16px,1.4vw,19px)">Philosophers call it kaizen. We call it gradient boosting.</p>
+      </div>
+      <div style="display:flex;align-items:center;flex-wrap:wrap;gap:8px 20px;font-family:'Geist Mono',monospace;font-size:13px;color:#EEF4ED;font-variant-numeric:tabular-nums">
+        <span>Round {{ gbRound }} of 7</span><span style="color:#C9D6E2">MSE {{ gbMse }}</span>
+        <button class="gb-tap" sc-camel-on-click="{{ gbClick }}" style="align-items:center;min-height:44px;padding:0 18px;border-radius:999px;border:1px solid rgba(238,244,237,.6);background:transparent;color:#EEF4ED;font-size:14px;cursor:pointer">Next round</button>
+      </div>
+    </div>
+    <svg sc-camel-view-box="0 0 600 300" role="img" aria-label="A model fitting a curve more closely each round" style="display:block;width:100%;height:auto;max-height:50vh">
+      <line x1="20" y1="150" x2="580" y2="150" style="stroke:rgba(141,169,196,.3);stroke-width:1"></line>
+      <path data-gbt="1" style="fill:none;stroke:#8DA9C4;stroke-width:1.25"></path>
+      <path data-gbp="1" style="fill:none;stroke:#EEF4ED;stroke-width:3;stroke-linejoin:round;stroke-linecap:round;filter:drop-shadow(0 0 6px rgba(141,169,196,.9))"></path>
+    </svg>
+    <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24px;font-size:15px;color:#C9D6E2">
+      <span>A small model built from scratch to show how the method works.</span>
+      <span style="font-family:'Geist Mono',monospace;font-size:12px">thin line: target · thick line: model so far</span>
+    </div>
+  </div>
+  </div>
+</section>
+
+<section data-screen-label="Skills" style="position:relative;padding:clamp(40px,6vw,90px) 0;overflow:hidden">
+  <div data-orbit="1" style="position:relative;max-width:1440px;margin:0 auto;height:clamp(480px,82vh,780px);perspective:1000px">
+    <div style="position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;pointer-events:none;text-align:center">
+      <div style="font-family:'Geist Mono',monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#C9D6E2">Skills, driven by</div>
+      <h2 style="margin:0;font-family:'Playfair Display',Georgia,serif;font-style:italic;font-weight:400;font-size:clamp(52px,11vw,160px);line-height:1.15;padding:0 .08em;background:linear-gradient(100deg,#EEF4ED 10%,#C9D6E2 55%,#8DA9C4 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:#EEF4ED">Curiosity</h2>
+    </div>
+    <sc-for list="{{ skills }}" as="s" hint-placeholder-count="13">
+    <div data-chip="1" style="position:absolute;left:50%;top:50%;width:clamp(92px,11vw,136px);aspect-ratio:1;border-radius:22%;background:linear-gradient(150deg,#1B4A85 0%,#13315C 100%);border:1px solid rgba(238,244,237,.35);box-shadow:0 18px 40px rgba(11,37,69,.55),inset 0 1px 0 rgba(238,244,237,.25);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8%;transform:translate(-50%,-50%);will-change:transform,opacity">
+      <span style="position:relative;width:40%;height:40%;display:flex;align-items:center;justify-content:center;font-family:'Geist Mono',monospace;font-weight:500;font-size:clamp(13px,1.6vw,20px);color:#EEF4ED"><span>{{ s.abbr }}</span><span data-ico="{{ s.icon }}" style="position:absolute;inset:0;opacity:0;background-repeat:no-repeat;background-position:50% 50%;background-size:contain;filter:brightness(0) invert(1)"></span></span>
+      <span style="font-family:'Geist Mono',monospace;font-size:clamp(11px,1.1vw,14px);line-height:1.1;white-space:nowrap;color:#EEF4ED">{{ s.label }}</span>
+    </div>
+    </sc-for>
+  </div>
+</section>
+
+<section class="hz-outer" data-hz="1" data-screen-label="Areas of interest">
+  <div class="hz-sticky">
+    <div data-drift="1" style="position:absolute;left:-10%;top:10%;width:70%;height:80%;border-radius:50%;background:radial-gradient(closest-side,rgba(141,169,196,.3),rgba(141,169,196,0));pointer-events:none"></div>
+    <div data-drift="2" style="position:absolute;right:-15%;top:30%;width:60%;height:70%;border-radius:50%;background:radial-gradient(closest-side,rgba(19,64,116,.9),rgba(19,64,116,0));pointer-events:none"></div>
+    <h2 style="position:relative;margin:0;padding:0 clamp(16px,5vw,80px);font-family:'Playfair Display',Georgia,serif;font-weight:400;font-size:clamp(36px,5.4vw,84px);line-height:1.05">Areas of <em style="font-style:italic;padding-right:.06em;background:linear-gradient(100deg,#EEF4ED,#8DA9C4);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:#EEF4ED">interest</em></h2>
+    <div class="hz-track" data-hztrack="1" style="position:relative">
+      <sc-for list="{{ goals }}" as="g" hint-placeholder-count="4">
+      <article class="hz-card" style="min-height:clamp(240px,38vh,380px);padding:clamp(22px,2.6vw,36px);border-radius:28px;background:rgba(238,244,237,.07);border:1px solid rgba(238,244,237,.2);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);box-shadow:0 24px 60px rgba(11,37,69,.4);display:flex;flex-direction:column;justify-content:space-between;gap:24px">
+        <span style="font-family:'Geist Mono',monospace;font-size:12px;letter-spacing:.12em;color:#C9D6E2">{{ g.no }} / 04</span>
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <h3 style="margin:0;font-family:'Playfair Display',Georgia,serif;font-style:italic;font-weight:400;font-size:clamp(28px,2.8vw,42px);line-height:1.1">{{ g.title }}</h3>
+          <p style="margin:0;color:#C9D6E2;font-size:16px">{{ g.text }}</p>
+        </div>
+      </article>
+      </sc-for>
+    </div>
+  </div>
+</section>
+</div>
+</main>
+</sc-if>
+
+<section id="contact" data-screen-label="Contact" style="position:relative;overflow:hidden;background:#0B2545">
+  <div style="position:absolute;inset:0;background-image:url(&quot;a424f996-ce45-4df0-93a3-8faf98c2fcb2&quot;);background-size:cover;background-position:50% 78%"></div>
+  <div style="position:absolute;inset:0;background:linear-gradient(180deg,#0B2545 0%,rgba(11,37,69,.9) 28%,rgba(11,37,69,.84) 70%,rgba(11,37,69,.95) 100%)"></div>
+  <div style="position:relative;max-width:1440px;margin:0 auto;padding:clamp(80px,12vw,180px) clamp(16px,5vw,80px) clamp(48px,7vw,96px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:clamp(32px,6vw,96px);align-items:start">
+    <h2 style="margin:0;font-family:'Playfair Display',Georgia,serif;font-weight:400;font-size:clamp(40px,6vw,96px);line-height:1.04;letter-spacing:-.01em;text-wrap:balance">Want to work on something <em style="font-style:italic;padding-right:.06em;background:linear-gradient(100deg,#EEF4ED,#8DA9C4);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:#EEF4ED">together?</em></h2>
+    <div style="display:flex;flex-direction:column;gap:20px;align-self:end">
+      <div style="font-family:'Geist Mono',monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#C9D6E2">Reach out</div>
+      <div style="display:flex;flex-direction:column">
+        <a href="#" aria-label="LinkedIn" style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;min-height:64px;padding:16px 0;border-top:1px solid rgba(141,169,196,.35);text-decoration:none;color:#EEF4ED;font-family:'Playfair Display',Georgia,serif;font-size:clamp(24px,2.6vw,36px);line-height:1.2;transition:color .3s,padding .3s" style-hover="color:#8DA9C4;padding-left:10px">LinkedIn <span style="font-family:'Geist Mono',monospace;font-size:16px">↗</span></a>
+        <a href="#" aria-label="Email" style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;min-height:64px;padding:16px 0;border-top:1px solid rgba(141,169,196,.35);border-bottom:1px solid rgba(141,169,196,.35);text-decoration:none;color:#EEF4ED;font-family:'Playfair Display',Georgia,serif;font-size:clamp(24px,2.6vw,36px);line-height:1.2;transition:color .3s,padding .3s" style-hover="color:#8DA9C4;padding-left:10px">Email <span style="font-family:'Geist Mono',monospace;font-size:16px">↗</span></a>
+      </div>
+    </div>
+  </div>
+  <footer style="position:relative;max-width:1440px;margin:0 auto;padding:24px clamp(16px,5vw,80px) 32px;border-top:1px solid rgba(141,169,196,.25);display:flex;flex-wrap:wrap;gap:8px 28px;align-items:center;font-size:15px">
+    <a href="#" style="min-height:44px;display:flex;align-items:center">[Placeholder: email]</a>
+    <a href="#" style="min-height:44px;display:flex;align-items:center">[Placeholder: LinkedIn]</a>
+    <a href="#" style="min-height:44px;display:flex;align-items:center">[Placeholder: GitHub]</a>
+    <a href="#" style="min-height:44px;display:flex;align-items:center">Blog</a>
+    <a href="#" style="min-height:44px;display:flex;align-items:center">AI slop</a>
+    <a href="#top" sc-camel-on-click="{{ toTop }}" style="min-height:44px;display:flex;align-items:center;gap:6px;margin-left:auto">Back to top <span>↑</span></a>
+  </footer>
+</section>
+
+<div data-wipe="1" style="position:fixed;inset:0;z-index:80;background:#13315C;display:flex;align-items:center;justify-content:center;pointer-events:none;opacity:0;-webkit-clip-path:circle(0px at 50% 50%);clip-path:circle(0px at 50% 50%)">
+  <span style="font-family:'Playfair Display',Georgia,serif;font-style:italic;font-size:clamp(64px,14vw,220px);color:#EEF4ED">{{ wipe }}</span>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script="" data-props="{&quot;reducedMotion&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Motion&quot;},&quot;marqueeSpeed&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:40,&quot;min&quot;:0,&quot;max&quot;:120,&quot;step&quot;:5,&quot;unit&quot;:&quot;px/s&quot;,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Motion&quot;},&quot;orbitSpeed&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:6,&quot;min&quot;:0,&quot;max&quot;:30,&quot;step&quot;:1,&quot;unit&quot;:&quot;°/s&quot;,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Motion&quot;}}">
+class Component extends DCLogic {
+  state = { tab: 'work', time: '', wipe: 'Work.', gbK: 0, gbStep: 7 };
+  projects = [
+    { no: '01', img: 'assets/project-quote.png', title: 'Quote automation', summary: 'Quotes that took 6 to 7 weeks now go out the same day.', tags: ['LlamaIndex', 'OpenAI', 'Azure'], problem: 'Preparing a quote took 6 to 7 weeks.', did: 'Built the automation with Claude Code and the OpenAI API. [Placeholder: what it reads and what it produces]', result: 'Quotes go out the same day.' },
+    { no: '02', img: 'assets/project-migrate.png', title: 'Legacy migration to Databricks', summary: 'Freelance data engineering on a move from a legacy system to Databricks and Delta Lake.', tags: ['Databricks', 'Delta Lake', 'Reconciliation', 'Model mapping'], problem: '[Placeholder: what the legacy system was and why it had to move]', did: 'Worked as a freelance data engineer on the migration to Databricks and Delta Lake. [Placeholder: your part of the work]', result: '[Placeholder: outcome]' },
+    { no: '03', img: 'assets/project-market.png', title: 'Market analytics', summary: 'A gourmet business wanted to launch a new product in the Australian market. I did the market research and statistical analysis.', tags: ['Market research', 'Statistical analysis', 'Monte Carlo simulation'], problem: '[Placeholder: the question the team could not answer]', did: 'Built dashboards in Power BI. [Placeholder: data sources and views]', result: '[Placeholder: outcome]' },
+    { no: '04', img: 'assets/project-webapp.png', title: 'AI web app development', summary: "Built an AI module into a client's system that makes onboarding customers from other platforms easier. A migration now takes under 60 seconds.", tags: ['TypeScript web app', 'Next.js', 'GraphQL', 'MCP', 'OpenAI', 'Web scraping'] },
+    { no: '05', img: 'assets/project-chain.png', title: 'Blockchain-based health records', summary: 'An IEEE paper on using a blockchain to store health records.', tags: ['IEEE paper', 'Research', 'Ethereum'], problem: '[Placeholder: the problem the paper looks at]', did: '[Placeholder: approach and your contribution]', result: 'Published with IEEE. [Placeholder: link to paper]' }
+  ];
+  skillList = [
+    ['Python', 'Py', '9/icons/python', 0], ['SQL', 'SQL', '', 0], ['Claude', 'Cl', '15/icons/claude', 0], ['MCP', 'MCP', '15/icons/modelcontextprotocol', 0], ['Git', 'Git', '9/icons/git', 0],
+    ['LlamaIndex', 'LI', '', 1], ['LangChain', 'LC', '15/icons/langchain', 1], ['Power BI', 'BI', '9/icons/powerbi', 1], ['PyTorch', 'PT', '9/icons/pytorch', 1], ['Jupyter', 'Ju', '9/icons/jupyter', 1], ['Azure', 'Az', '9/icons/microsoftazure', 1], ['AWS', 'AWS', '9/icons/amazonaws', 1], ['Power Automate', 'PA', '9/icons/powerautomate', 1]
+  ];
+  areas = ['AI Adoption', 'Automation', 'Data Analytics', 'Data Engineering', 'Dashboards', 'Statistical Analytics'];
+  interests = ['Sport Analytics', 'Is AI Truly Intelligent?', 'Conscious AI', 'Operations Improvement'];
+  statement = "It starts with an idea. Then a question: what are we solving for? It's the most important thing!";
+
+  componentDidMount() {
+    const h = location.hash || '';
+    if (h.indexOf('about') >= 0) this.setState({ tab: 'about', wipe: 'About.' });
+    this.buildGB();
+    this.heroT0 = this.t0 = performance.now();
+    this.mq = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)') : null;
+    const fmt = new Intl.DateTimeFormat('en-AU', { timeZone: 'Australia/Melbourne', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false });
+    const clock = () => this.setState({ time: fmt.format(new Date()) });
+    clock(); this.clock = setInterval(clock, 1000);
+    this.dirty = true; this.revT = setTimeout(() => this.reveal(), 60);
+    this.onResize = () => { this.dirty = true; };
+    window.addEventListener('resize', this.onResize);
+    const loop = (now) => { try { this.frame(now); } catch (e) { console.error(e); } this.raf = requestAnimationFrame(loop); };
+    this.raf = requestAnimationFrame(loop);
+  }
+  componentDidUpdate() { this.dirty = true; clearTimeout(this.revT); this.revT = setTimeout(() => this.reveal(), 60); }
+  componentWillUnmount() { cancelAnimationFrame(this.raf); clearInterval(this.clock); window.removeEventListener('resize', this.onResize); }
+  scroller() { const d = document.scrollingElement || document.documentElement; return d.scrollHeight > d.clientHeight + 1 ? d : (document.body.scrollHeight > document.body.clientHeight + 1 ? document.body : d); }
+  reveal() { const rm = this.rm(); document.querySelectorAll('[data-reveal]').forEach((el) => { if (el.dataset.done) return; el.dataset.done = '1'; const d = 0.25 + (+el.dataset.reveal) * 0.16; el.style.transition = rm ? 'none' : 'transform 1.2s cubic-bezier(.2,.7,.1,1) ' + d + 's, opacity 1.2s ease ' + d + 's'; el.style.transform = 'translateY(0)'; el.style.opacity = 1; }); }
+  rm() { return !!(this.props.reducedMotion ?? false) || !!(this.mq && this.mq.matches); }
+
+buildGB() {
+    const n = 97, xs = [], ys = [];
+    for (let i = 0; i < n; i++) { const x = i / (n - 1); xs.push(x); ys.push(0.55 * Math.sin(2 * Math.PI * 1.25 * x + 0.3) + 0.22 * Math.sin(2 * Math.PI * 3.1 * x + 1.2)); }
+    const fit = (res, lo, hi, depth, out) => {
+      let sum = 0; for (let i = lo; i < hi; i++) sum += res[i];
+      let best = -1, bestGain = -Infinity, l = 0;
+      if (depth > 0 && hi - lo > 1) for (let s = lo + 1; s < hi; s++) { l += res[s - 1]; const g = l * l / (s - lo) + (sum - l) * (sum - l) / (hi - s); if (g > bestGain) { bestGain = g; best = s; } }
+      if (best < 0) { const m = sum / (hi - lo); for (let i = lo; i < hi; i++) out[i] = m; return; }
+      fit(res, lo, best, depth - 1, out); fit(res, best, hi, depth - 1, out);
+    };
+    const mse = (P) => P.reduce((a, p, i) => a + (ys[i] - p) * (ys[i] - p), 0) / n;
+    let F = ys.map(() => ys.reduce((a, b) => a + b, 0) / n); const preds = [F.slice()], mses = [mse(F)];
+    for (let r = 0; r < 7; r++) { const res = ys.map((y, i) => y - F[i]), tree = new Array(n); fit(res, 0, n, 3, tree); F = F.map((f, i) => f + 0.55 * tree[i]); preds.push(F.slice()); mses.push(mse(F)); }
+    this.gb = { xs, ys, preds, mses };
+  }
+  skillIdx(k) { return this.skillList.filter((x) => x[3] === k[3]).indexOf(k); }
+  gbPath(vals) { const xs = this.gb.xs; return 'M' + vals.map((v, i) => (20 + 560 * xs[i]).toFixed(1) + ' ' + (150 - 150 * v).toFixed(1)).join('L'); }
+  drawGB(p) {
+    const G = this.gb, E = this.els; if (!G || !E.gbP) return;
+    const pos = Math.max(0, Math.min(7, p * 7)), k = Math.min(6, Math.floor(pos)), f = pos - k, a = G.preds[k], b = G.preds[k + 1];
+    E.gbP.setAttribute('d', this.gbPath(a.map((v, i) => v + (b[i] - v) * f)));
+  }
+
+    collect() {
+    const q = (s) => Array.from(document.querySelectorAll(s));
+    this.els = { rev: q('[data-reveal]'), hero: q('[data-hero]'), words: q('[data-words]')[0], stat: q('[data-stat]')[0], cards: q('[data-card]'), hz: q('[data-hz]')[0], mq: q('[data-mq]'), pulse: q('[data-pulse]'), cue: q('[data-cue]'), drift: q('[data-drift]'), orbit: q('[data-orbit]')[0], chips: q('[data-chip]'), gbWrap: q('[data-gbwrap]')[0], gbT: q('[data-gbt]')[0], gbP: q('[data-gbp]')[0] };
+    if (this.els.gbT && this.gb) this.els.gbT.setAttribute('d', this.gbPath(this.gb.ys));
+    q('[data-ico]').forEach((el) => {
+      const src = el.dataset.ico; if (!src || el.dataset.on) return; el.dataset.on = '1';
+      const im = new Image();
+      im.onload = () => { el.style.backgroundImage = 'url("' + src + '")'; el.style.opacity = 1; if (el.previousElementSibling) el.previousElementSibling.style.visibility = 'hidden'; };
+      im.src = src;
+    });
+    this.lgp = null;
+  }
+
+  frame(now) {
+    const rm = this.rm(), vh = window.innerHeight, vw = window.innerWidth, sy = this.scroller().scrollTop;
+    const wasDirty = this.dirty || !this.els;
+    if (wasDirty) { this.collect(); this.dirty = false; }
+    const moved = wasDirty || sy !== this.lsy || rm !== this.lrm; this.lsy = sy; this.lrm = rm;
+    const E = this.els, cl = (v) => Math.max(0, Math.min(1, v)), ease = (v) => 1 - Math.pow(1 - v, 3), t = now - this.t0;
+
+    E.rev.forEach((el) => {
+      if (el.dataset.done) return; el.dataset.done = '1';
+      const d = 0.25 + (+el.dataset.reveal) * 0.16;
+      el.style.transition = rm ? 'none' : 'transform 1.2s cubic-bezier(.2,.7,.1,1) ' + d + 's, opacity 1.2s ease ' + d + 's';
+      el.style.transform = 'translateY(0)'; el.style.opacity = 1;
+    });
+
+    const hs = now - this.heroT0, settling = hs < 3000;
+    if (moved || settling) E.hero.forEach((h) => {
+      const r = h.getBoundingClientRect(), s = cl(-r.top / r.height);
+      const par = h.querySelector('[data-par]'), dark = h.querySelector('[data-dark]'), txt = h.querySelector('[data-herotext]');
+      if (rm) { par.style.transform = 'none'; dark.style.opacity = 0; txt.style.opacity = 1; txt.style.transform = 'none'; return; }
+      const sc = 1 + 0.08 * (1 - ease(cl(hs / 2800)));
+      par.style.transform = 'translate3d(0,' + (-r.top * 0.38).toFixed(1) + 'px,0) scale(' + sc.toFixed(4) + ')';
+      dark.style.opacity = (s * 0.85).toFixed(3);
+      txt.style.opacity = cl(1 - s * 1.9).toFixed(3); txt.style.transform = 'translate3d(0,' + (-s * 110).toFixed(1) + 'px,0)';
+    });
+
+    if (moved) {
+      if (E.words) {
+        const ws = E.words.querySelectorAll('[data-word]'), r = E.words.getBoundingClientRect();
+        const p = rm ? 1 : cl((vh * 0.82 - r.top) / (r.height + vh * 0.42)) * (ws.length + 1);
+        ws.forEach((w, i) => { w.style.opacity = (0.22 + 0.78 * cl(p - i)).toFixed(3); });
+      }
+      if (E.stat) {
+        const r = E.stat.getBoundingClientRect(), p = rm ? 1 : cl((vh * 0.72 - r.top) / (vh * 0.55));
+        const strike = E.stat.querySelector('[data-strike]'), same = E.stat.querySelector('[data-same]'), q = cl((p - 0.55) / 0.45);
+        strike.style.transform = 'scaleX(' + cl(p * 1.9).toFixed(3) + ')';
+        same.style.opacity = q.toFixed(3); same.style.transform = 'translate3d(0,' + ((1 - q) * 28).toFixed(1) + 'px,0)';
+      }
+E.cards.forEach((c, i) => {
+        const shade = c.querySelector('[data-shade]');
+        if (vw < 820) { c.style.position = 'relative'; c.style.top = '0'; c.style.transform = 'none'; shade.style.opacity = 0; return; }
+        c.style.position = 'sticky'; c.style.top = (110 + i * 22) + 'px';
+        const nx = E.cards[i + 1]; let p = 0;
+        if (nx) { const ch = c.offsetHeight; p = cl((c.getBoundingClientRect().top + ch - nx.getBoundingClientRect().top) / ch); }
+        c.style.transform = rm ? 'none' : 'scale(' + (1 - 0.06 * p).toFixed(4) + ')'; shade.style.opacity = (p * 0.5).toFixed(3);
+      });
+      if (E.hz) {
+        const track = E.hz.querySelector('[data-hztrack]');
+        if (rm || vw < 768) track.style.transform = 'none';
+        else { const r = E.hz.getBoundingClientRect(), p = cl(-r.top / Math.max(1, r.height - vh)); track.style.transform = 'translate3d(' + (-p * Math.max(0, track.scrollWidth - vw)).toFixed(1) + 'px,0,0)'; }
+      }
+    }
+
+    const speed = this.props.marqueeSpeed ?? 40;
+    E.mq.forEach((m) => {
+      const half = m.scrollWidth / 2; if (!half) return;
+      const dir = +m.dataset.mq, v = rm ? 0 : (t / 1000 * speed + sy * 0.35) * dir;
+      m.style.transform = 'translate3d(' + (-(((v % half) + half) % half)).toFixed(1) + 'px,0,0)';
+    });
+    const ph = (t / 2000) % 1;
+    E.pulse.forEach((p) => { p.style.transform = rm ? 'none' : 'scale(' + (1 + ph * 2.4).toFixed(3) + ')'; p.style.opacity = rm ? 0 : (0.6 * (1 - ph)).toFixed(3); });
+    E.cue.forEach((c) => { c.style.transform = rm ? 'none' : 'translate3d(0,' + (-12 + ph * 46).toFixed(1) + 'px,0)'; });
+    E.drift.forEach((d, i) => { d.style.transform = rm ? 'none' : 'translate3d(' + (Math.sin(t / 7000 + i * 2) * 40).toFixed(1) + 'px,' + (Math.cos(t / 9000 + i) * 26).toFixed(1) + 'px,0)'; });
+
+if (E.orbit && E.chips.length) {
+      const OW = E.orbit.offsetWidth, OH = E.orbit.offsetHeight, n = E.chips.length, tt = rm ? 0 : t;
+      const spin = rm ? 0 : t / 1000 * (this.props.orbitSpeed ?? 6) * Math.PI / 180 + sy * 0.0012;
+      E.chips.forEach((ch, i) => {
+        const a = i * 2.39996 + spin, z = Math.sin(a), d = (z + 1) / 2, side = i % 2 ? 1 : -1;
+        const x = Math.cos(a) * OW * (0.24 + 0.13 * ((i * 7) % 5) / 4), y = side * (0.23 + 0.2 * Math.floor(i / 2) / 6) * OH + Math.sin(tt / 3100 + i * 1.7) * 10;
+        const rx = Math.sin(tt / 2600 + i) * 24 + side * -10, ry = -Math.cos(a) * 38, rz = Math.sin(tt / 3400 + i * 2) * 12 + ((i % 3) - 1) * 10;
+        ch.style.transform = 'translate(-50%,-50%) translate3d(' + x.toFixed(1) + 'px,' + y.toFixed(1) + 'px,0) scale(' + (0.76 + 0.28 * d).toFixed(3) + ') rotateX(' + rx.toFixed(1) + 'deg) rotateY(' + ry.toFixed(1) + 'deg) rotateZ(' + rz.toFixed(1) + 'deg)';
+        ch.style.opacity = (0.55 + 0.45 * d).toFixed(3); ch.style.zIndex = z > 0 ? 3 : 1;
+      });
+    }
+    if (E.gbWrap) {
+      let p;
+      if (rm) p = 1;
+      else if (vw < 820) { const tg = this.state.gbStep / 7, cur = this.gbCur == null ? tg : this.gbCur; p = Math.abs(tg - cur) < 0.002 ? tg : cur + (tg - cur) * 0.14; this.gbCur = p; }
+      else { const r = E.gbWrap.getBoundingClientRect(); p = cl(-r.top / Math.max(1, r.height - vh)); }
+      if (p !== this.lgp) {
+        this.lgp = p; this.drawGB(p);
+        const k = rm ? 7 : (vw < 820 ? this.state.gbStep : Math.min(7, Math.floor(p * 7 + 1e-6)));
+        if (k !== this.state.gbK) this.setState({ gbK: k });
+      }
+    }
+  }
+
+  switchTab(e, tab) {
+    if (e && e.preventDefault) e.preventDefault();
+    if (tab === this.state.tab || this.wiping) { if (tab === this.state.tab) this.toTop(); return; }
+    const ov = document.querySelector('[data-wipe]'), rm = this.rm();
+    const x = e && e.clientX != null ? e.clientX : window.innerWidth / 2, y = e && e.clientY != null ? e.clientY : 40;
+    const r = Math.hypot(Math.max(x, window.innerWidth - x), Math.max(y, window.innerHeight - y)) + 20;
+    const clip = (v) => { ov.style.webkitClipPath = v; ov.style.clipPath = v; };
+    this.wiping = true; this.setState({ wipe: tab === 'work' ? 'Work.' : 'About.' });
+    ov.style.transition = 'none';
+    if (rm) { clip('none'); ov.style.opacity = 0; void ov.offsetWidth; ov.style.transition = 'opacity .25s'; ov.style.opacity = 1; }
+    else { ov.style.opacity = 1; clip('circle(0px at ' + x + 'px ' + y + 'px)'); void ov.offsetWidth; ov.style.transition = 'clip-path .8s cubic-bezier(.65,0,.2,1), -webkit-clip-path .8s cubic-bezier(.65,0,.2,1)'; clip('circle(' + r + 'px at ' + x + 'px ' + y + 'px)'); }
+    setTimeout(() => {
+      this.setState({ tab }); this.scroller().scrollTop = 0; this.heroT0 = performance.now() + 250; this.lgp = null;
+      try { history.replaceState(null, '', '#' + tab); } catch (err) {}
+      setTimeout(() => {
+        ov.style.transition = 'opacity .55s ease'; ov.style.opacity = 0;
+        setTimeout(() => { ov.style.transition = 'none'; clip('circle(0px at 50% 50%)'); this.wiping = false; }, 580);
+      }, rm ? 150 : 380);
+    }, rm ? 270 : 820);
+  }
+  toTop = (e) => { if (e && e.preventDefault) e.preventDefault(); const sc = this.scroller(); if (this.rm() || !sc.scrollTo) sc.scrollTop = 0; else sc.scrollTo({ top: 0, behavior: 'smooth' }); };
+renderVals() {
+    const s = this.state, rm = this.rm();
+    const rep = (a) => a.concat(a, a, a);
+    const act = (on) => on ? ['#EEF4ED', '#0B2545'] : ['transparent', '#EEF4ED'];
+    const w = act(s.tab === 'work'), a = act(s.tab === 'about');
+    return {
+      rootClass: rm ? 'rm' : '', isWork: s.tab === 'work', isAbout: s.tab === 'about', time: s.time, wipe: s.wipe,
+      workBg: w[0], workFg: w[1], aboutBg: a[0], aboutFg: a[1],
+      workClick: (e) => this.switchTab(e, 'work'), aboutClick: (e) => this.switchTab(e, 'about'), toTop: this.toTop,
+      mq1: rep(this.areas), mq2: rep(this.interests), words: this.statement.split(' '), projects: this.projects,
+      skills: this.skillList.map((k) => ({ name: k[0], label: k[0] === k[1] ? '' : k[0], abbr: k[1], icon: k[2] ? 'https://cdn.jsdelivr.net/npm/simple-icons@' + k[2] + '.svg' : '', ring: k[3], i: this.skillIdx(k) })),
+      goals: [
+        { no: '01', title: 'Sport analytics', text: '[Placeholder: which sport, and the question you want to answer]' },
+        { no: '02', title: 'Is AI truly intelligent?', text: 'Research into whether AI is truly intelligent. [Placeholder: the angle you want to take]' },
+        { no: '03', title: 'Conscious AI', text: '[Placeholder: what draws you to this]' },
+        { no: '04', title: 'Operations improvement', text: '[Placeholder: the kind of operations work you want to do]' }
+      ],
+      gbRound: s.gbK, gbMse: this.gb ? this.gb.mses[s.gbK].toFixed(4) : '',
+      gbClick: () => this.setState((st) => ({ gbStep: st.gbStep >= 7 ? 0 : st.gbStep + 1 }))
+    };
+  }
+}
+</script>
+
+
+</body></html>

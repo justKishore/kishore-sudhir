@@ -1,5 +1,19 @@
-// About view. Sections land here in build step 4:
-// AboutHero, Bio, GradientBoosting, SkillsOrbit, InterestsHorizontal.
+import { AboutHero } from "./AboutHero";
+import { Bio } from "./Bio";
+import { GradientBoosting } from "./GradientBoosting";
+import { SkillsOrbit } from "./SkillsOrbit";
+import { Interests } from "./Interests";
+
 export function AboutView() {
-  return <div id="about" className="view-bg min-h-[200svh]" />;
+  return (
+    <>
+      <AboutHero />
+      <div className="view-body view-body--about">
+        <Bio />
+        <GradientBoosting />
+        <SkillsOrbit />
+        <Interests />
+      </div>
+    </>
+  );
 }

@@ -1,5 +1,5 @@
-import { Views } from "@/components/layout/Views";
+import { Site } from "@/components/Site";
 
 export default function Home() {
-  return <Views />;
+  return <Site />;
 }

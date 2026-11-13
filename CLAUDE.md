@@ -2,6 +2,10 @@
 
 Personal portfolio for Kish (Kishore Sudhir), Data Scientist and AI Engineer in Melbourne. Two views, **Work** and **About**, plus a shared Contact footer. The approved design lives in `design-reference/DESIGN_SPEC.md`. That spec is the source of truth: build it faithfully, do not redesign it.
 
+## Build approach (updated 2026-11-13, overrides the Stack/Scroll/Content notes below)
+
+`kish-portfolio-kit/BUILD.md` is the current brief. The site is a faithful port of the mockup (`design-reference/mock-website/mockup-source.html` is the extracted readable source): plain CSS from `design-reference/tokens.css` in `src/app/globals.css`, and ONE `requestAnimationFrame` loop in `src/components/motion/useScene.ts` running the mockup's own maths. No GSAP, Lenis or R3F in use (still installed, unused). Copy lives in `src/content/content.json` (a copy of `design-reference/content.json`), read through `src/content/site.ts`.
+
 ## Stack
 
 - Next.js (App Router) + React 19 + TypeScript, `src/` layout, Tailwind v4

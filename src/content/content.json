@@ -1,0 +1,76 @@
+{
+  "site": { "name": "Kishore Sudhir", "timezone": "Australia/Melbourne" },
+  "nav": ["Work", "About"],
+  "work": {
+    "hero": {
+      "headline": ["Data and AI work", "that *holds up* in production"],
+      "headlineNote": "PLACEHOLDER: confirm headline",
+      "status": { "title": "Open to work now", "text": "Data engineering, AI adoption and automation roles. Anywhere in Australia, or remote." },
+      "clockLabel": "Melbourne"
+    },
+    "marqueeRow1": ["AI Adoption", "Automation", "Data Analytics", "Data Engineering", "Dashboards", "Statistical Analytics"],
+    "marqueeRow2": ["Sport Analytics", "Is AI Truly Intelligent?", "Conscious AI", "Operations Improvement"],
+    "statement": { "label": "How I work", "text": "It starts with an idea. Then a question: what are we solving for? It's the most important thing!" },
+    "stat": {
+      "beforeLabel": "Time to send a quote, before", "before": "6 to 7 weeks",
+      "afterLabel": "After", "after": "Same day.",
+      "body": ["A quoting process that took 6 to 7 weeks now finishes the same day. I automated it with AI.", "Do you have a process that takes this long?"],
+      "cta": { "label": "Book free consultation", "href": "#contact" }
+    },
+    "projectsHeading": "Selected *work*",
+    "projects": [
+      { "no": "01", "img": "/assets/project-quote.webp", "title": "Quote automation", "summary": "Quotes that took 6 to 7 weeks now go out the same day.", "tags": ["LlamaIndex", "OpenAI", "Azure"] },
+      { "no": "02", "img": "/assets/project-migrate.webp", "title": "Legacy migration to Databricks", "summary": "Freelance data engineering on a move from a legacy system to Databricks and Delta Lake.", "tags": ["Databricks", "Delta Lake", "Reconciliation", "Model mapping"] },
+      { "no": "03", "img": "/assets/project-market.webp", "title": "Market analytics", "summary": "A gourmet business wanted to launch a new product in the Australian market. I did the market research and statistical analysis.", "tags": ["Market research", "Statistical analysis", "Monte Carlo simulation"] },
+      { "no": "04", "img": "/assets/project-webapp.webp", "title": "AI web app development", "summary": "Built an AI module into a client's system that makes onboarding customers from other platforms easier. A migration now takes under 60 seconds.", "tags": ["TypeScript web app", "Next.js", "GraphQL", "MCP", "OpenAI", "Web scraping"] },
+      { "no": "05", "img": "/assets/project-chain.webp", "title": "Blockchain-based health records", "summary": "An IEEE paper on using a blockchain to store health records.", "tags": ["IEEE paper", "Research", "Ethereum"], "link": "https://doi.org/10.1109/ICSSS54381.2022.9782228" }
+    ]
+  },
+  "about": {
+    "bio": [
+      "I'm Kish, a Data Scientist and AI Engineer in Melbourne. I'm the person who asks \"but why?\" one too many times. I like problems that are messy, a little unclear, and worth figuring out properly.",
+      "Right now I'm open to new roles, collaborations and side projects. If you're working on something in sport analytics, AI research or improving how things run, I'm happy to volunteer my time. Let's talk."
+    ],
+    "facts": [
+      { "label": "Experience", "value": "3+ years", "suffix": "in industry", "big": true },
+      { "label": "Based in", "value": "Melbourne" },
+      { "label": "Study", "value": "Master of Data Science, RMIT University" },
+      { "label": "Background", "value": "Computer science, Anna University" }
+    ],
+    "gradientBoosting": { "label": "Gradient boosting", "heading": "Small steps in the right *direction*", "sub": "Philosophers call it kaizen. We call it gradient boosting.", "caption": "A small model built from scratch to show how the method works.", "legend": "thin line: target · thick line: model so far" },
+    "skills": {
+      "label": "Skills, driven by", "heading": "Curiosity",
+      "items": [
+        { "name": "Python", "abbr": "Py", "icon": "simple-icons@9/icons/python" },
+        { "name": "SQL", "abbr": "SQL", "icon": null },
+        { "name": "Claude", "abbr": "Cl", "icon": "simple-icons@15/icons/claude" },
+        { "name": "MCP", "abbr": "MCP", "icon": "simple-icons@15/icons/modelcontextprotocol" },
+        { "name": "Git", "abbr": "Git", "icon": "simple-icons@9/icons/git" },
+        { "name": "LlamaIndex", "abbr": "LI", "icon": null },
+        { "name": "LangChain", "abbr": "LC", "icon": "simple-icons@15/icons/langchain" },
+        { "name": "Power BI", "abbr": "BI", "icon": "simple-icons@9/icons/powerbi" },
+        { "name": "PyTorch", "abbr": "PT", "icon": "simple-icons@9/icons/pytorch" },
+        { "name": "Jupyter", "abbr": "Ju", "icon": "simple-icons@9/icons/jupyter" },
+        { "name": "Azure", "abbr": "Az", "icon": "simple-icons@9/icons/microsoftazure" },
+        { "name": "AWS", "abbr": "AWS", "icon": "simple-icons@9/icons/amazonaws" },
+        { "name": "Power Automate", "abbr": "PA", "icon": "simple-icons@9/icons/powerautomate" }
+      ]
+    },
+    "interestsHeading": "Areas of *interest*",
+    "interests": [
+      { "no": "01", "title": "Sport analytics", "text": "PLACEHOLDER: which sport, and the question you want to answer" },
+      { "no": "02", "title": "Is AI truly intelligent?", "text": "Research into whether AI is truly intelligent. PLACEHOLDER: the angle you want to take" },
+      { "no": "03", "title": "Conscious AI", "text": "PLACEHOLDER: what draws you to this" },
+      { "no": "04", "title": "Operations improvement", "text": "PLACEHOLDER: the kind of operations work you want to do" }
+    ]
+  },
+  "contact": {
+    "heading": "Want to work on something *together?*",
+    "label": "Reach out",
+    "links": [ { "label": "LinkedIn", "href": "PLACEHOLDER" }, { "label": "Email", "href": "PLACEHOLDER" } ],
+    "footer": [
+      { "label": "Email", "href": "PLACEHOLDER" }, { "label": "LinkedIn", "href": "PLACEHOLDER" }, { "label": "GitHub", "href": "PLACEHOLDER" },
+      { "label": "Blog", "href": "PLACEHOLDER" }, { "label": "AI slop", "href": "PLACEHOLDER" }
+    ]
+  }
+}

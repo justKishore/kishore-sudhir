@@ -1,5 +1,19 @@
-// Work view. Sections land here in build steps 2 and 3:
-// Hero, Marquee, Statement, StatStrike, ProjectStack.
+import { Hero } from "./Hero";
+import { Marquee } from "./Marquee";
+import { Statement } from "./Statement";
+import { Stat } from "./Stat";
+import { ProjectStack } from "./ProjectStack";
+
 export function WorkView() {
-  return <div id="work" className="view-bg min-h-[200svh]" />;
+  return (
+    <>
+      <Hero />
+      <div className="view-body">
+        <Marquee />
+        <Statement />
+        <Stat />
+        <ProjectStack />
+      </div>
+    </>
+  );
 }

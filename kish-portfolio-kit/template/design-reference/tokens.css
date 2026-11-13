@@ -1,0 +1,54 @@
+/* Design tokens extracted from the Portfolio mockup */
+@import url('https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&display=swap');
+
+:root {
+  /* Colour: navy dusk palette */
+  --navy-950: #0B2545;   /* page background, button text on light */
+  --navy-900: #13315C;   /* cards, wipe overlay */
+  --navy-800: #134074;   /* hero base, image fallback */
+  --navy-700: #1B4A85;   /* skill chip gradient start */
+  --steel-400: #8DA9C4;  /* accents, dots, gradient end, placeholder text */
+  --mist-200:  #C9D6E2;  /* secondary text, mono labels */
+  --paper-50:  #EEF4ED;  /* primary text, primary button bg */
+  --live:      #4ADE80;  /* "open to work" dot */
+
+  --border-soft:   rgba(141,169,196,.26);
+  --border-line:   rgba(141,169,196,.35);
+  --border-pill:   rgba(141,169,196,.45);
+  --glass-bg:      rgba(11,37,69,.5);
+  --glass-border:  rgba(238,244,237,.22);
+
+  --grad-text:      linear-gradient(100deg, #EEF4ED 0%, #8DA9C4 100%);
+  --grad-text-wide: linear-gradient(100deg, #EEF4ED 10%, #C9D6E2 55%, #8DA9C4 100%);
+  --grad-page:      linear-gradient(180deg, #134074 0%, #13315C 42%, #0B2545 100%);
+  --grad-hero-overlay: linear-gradient(180deg, rgba(11,37,69,.5) 0%, rgba(11,37,69,.18) 30%, rgba(11,37,69,.55) 62%, rgba(19,64,116,.94) 92%, #134074 100%);
+
+  /* Type */
+  --font-sans:  'Geist', Helvetica, Arial, sans-serif;     /* body, 17px / 1.6 */
+  --font-serif: 'Playfair Display', Georgia, serif;        /* headings, italics for emphasis */
+  --font-mono:  'Geist Mono', ui-monospace, monospace;     /* labels: 12px, .12em tracking, uppercase */
+
+  --fs-body: 17px;
+  --fs-h1: clamp(34px, 6.4vw, 116px);
+  --fs-h2: clamp(36px, 5.4vw, 84px);
+  --fs-h3: clamp(28px, 3.4vw, 52px);
+  --fs-stat: clamp(46px, 13vw, 210px);
+  --fs-marquee: clamp(28px, 5vw, 76px);
+  --fs-statement: clamp(28px, 4.4vw, 64px);
+
+  /* Layout */
+  --gutter: clamp(16px, 5vw, 80px);
+  --max-w: 1440px;
+  --max-w-hero: 1600px;
+  --radius-card: 28px;
+  --radius-img: 16px;
+  --radius-pill: 999px;
+  --tap: 44px;
+
+  --shadow-card: 0 -18px 50px rgba(11,37,69,.5), 0 30px 60px rgba(11,37,69,.35);
+  --shadow-glow: 0 0 30px rgba(141,169,196,.45);
+
+  /* Motion */
+  --ease-reveal: cubic-bezier(.2,.7,.1,1);
+  --ease-wipe:   cubic-bezier(.65,0,.2,1);
+}
