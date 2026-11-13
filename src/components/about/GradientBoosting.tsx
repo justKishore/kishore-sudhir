@@ -44,10 +44,6 @@ export function GradientBoosting() {
             <path data-gbt="1" className="gb-target" />
             <path data-gbp="1" className="gb-model" />
           </svg>
-          <div className="gb-foot">
-            <span>{g.caption}</span>
-            <span className="gb-legend">{g.legend}</span>
-          </div>
         </div>
       </div>
     </section>

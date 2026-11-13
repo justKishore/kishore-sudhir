@@ -37,16 +37,16 @@
       { "label": "Study", "value": "Master of Data Science, RMIT University" },
       { "label": "Background", "value": "Computer science, Anna University" }
     ],
-    "gradientBoosting": { "label": "Gradient boosting", "heading": "Small steps in the right *direction*", "sub": "Philosophers call it kaizen. We call it gradient boosting.", "caption": "A small model built from scratch to show how the method works.", "legend": "thin line: target · thick line: model so far" },
+    "gradientBoosting": { "label": "Gradient boosting", "heading": "Small steps in the right *direction*", "sub": "Philosophers call it kaizen. We call it gradient boosting." },
     "skills": {
       "label": "Skills, driven by", "heading": "Curiosity",
       "items": [
         { "name": "Python", "abbr": "Py", "icon": "simple-icons@9/icons/python" },
-        { "name": "SQL", "abbr": "SQL", "icon": null },
+        { "name": "SQL", "abbr": "DB", "icon": "tabler/icons/database" },
         { "name": "Claude", "abbr": "Cl", "icon": "simple-icons@15/icons/claude" },
         { "name": "MCP", "abbr": "MCP", "icon": "simple-icons@15/icons/modelcontextprotocol" },
         { "name": "Git", "abbr": "Git", "icon": "simple-icons@9/icons/git" },
-        { "name": "LlamaIndex", "abbr": "LI", "icon": null },
+        { "name": "LlamaIndex", "abbr": "LI", "icon": "lobehub/icons/llamaindex" },
         { "name": "LangChain", "abbr": "LC", "icon": "simple-icons@15/icons/langchain" },
         { "name": "Power BI", "abbr": "BI", "icon": "simple-icons@9/icons/powerbi" },
         { "name": "PyTorch", "abbr": "PT", "icon": "simple-icons@9/icons/pytorch" },

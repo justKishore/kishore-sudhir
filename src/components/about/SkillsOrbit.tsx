@@ -29,8 +29,8 @@ export function SkillsOrbit() {
           )}
         </div>
       </div>
-      {/* The same skills as plain text, so they can be read and scanned without chasing the vortex. */}
-      <ul className="skills__list">
+      {/* The chips are decorative (aria-hidden), so screen readers get the list here. */}
+      <ul className="sr-only">
         {s.items.map((k) => (
           <li key={k.name}>{k.name}</li>
         ))}

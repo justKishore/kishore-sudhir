@@ -76,7 +76,16 @@ function setupChips(els: Els) {
     ch.style.zIndex = String(1 + Math.round(depth * 10));
     ch.toggleAttribute("data-far", depth < 0.35);
     const label = ch.querySelector<HTMLElement>(".chip__label");
-    if (label) label.style.fontSize = `${Math.max(base, LABEL_MIN_PX / pScale).toFixed(1)}px`;
+    if (label) {
+      // Big enough to read after the perspective shrink, small enough that the longest word
+      // fits inside the chip (Geist Mono advances ~0.62em per character, labels get 88% width).
+      const longest = Math.max(...(label.textContent ?? "").split(/\s+/).map((w) => w.length), 1);
+      const fit = (ch.offsetWidth * 0.88) / (longest * 0.62);
+      const size = Math.min(Math.max(base, LABEL_MIN_PX / pScale), fit);
+      label.style.fontSize = `${size.toFixed(1)}px`;
+      // If it can't be both readable and inside the chip, show the icon alone, like far chips.
+      label.style.display = size * pScale < LABEL_MIN_PX - 1 ? "none" : "";
+    }
   });
   const orbit = els.orbit;
   const center = orbit?.querySelector<HTMLElement>(".orbit__center");

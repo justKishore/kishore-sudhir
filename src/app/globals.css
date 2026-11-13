@@ -372,8 +372,6 @@ main:focus { outline: none; }
 .gb-axis { stroke: rgba(141, 169, 196, 0.3); stroke-width: 1; }
 .gb-target { fill: none; stroke: var(--steel-400); stroke-width: 1.25; }
 .gb-model { fill: none; stroke: var(--paper-50); stroke-width: 3; stroke-linejoin: round; stroke-linecap: round; filter: drop-shadow(0 0 6px rgba(141, 169, 196, 0.9)); }
-.gb-foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px; font-size: 15px; color: var(--mist-200); }
-.gb-legend { font-family: var(--font-mono); font-size: 12px; }
 
 /* ---------- Skills vortex (chips orbit the centre at different depths, after cosmos.so) ---------- */
 /* Chips fade out at the orbit's top and bottom instead of being sliced by a hard edge. */
@@ -383,11 +381,7 @@ main:focus { outline: none; }
   -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 14%, #000 86%, transparent 100%);
   mask-image: linear-gradient(to bottom, transparent 0, #000 14%, #000 86%, transparent 100%);
 }
-.skills__list {
-  max-width: 860px; margin: 0 auto; padding: 0 var(--gutter) clamp(56px, 8vw, 104px); list-style: none;
-  display: flex; flex-wrap: wrap; justify-content: center; gap: 10px 22px;
-  font-family: var(--font-mono); font-size: 13px; letter-spacing: 0.04em; color: var(--mist-200);
-}
+
 .orbit__center {
   position: absolute; inset: 0; z-index: 20; /* above every chip (chips use z 1 to 11) */ display: flex; flex-direction: column; align-items: center; justify-content: center;
   gap: 10px; pointer-events: none; text-align: center;
@@ -417,7 +411,8 @@ main:focus { outline: none; }
   background-size: contain; filter: brightness(0) invert(1);
 }
 .chip[data-far] .chip__label { display: none; } /* far chips are too small and faint to read */
-.chip__label { font-family: var(--font-mono); font-size: clamp(11px, 1.1vw, 14px); line-height: 1.1; white-space: nowrap; color: var(--paper-50); }
+/* Labels stay inside the chip: long names wrap onto two centred lines. */
+.chip__label { max-width: 88%; font-family: var(--font-mono); font-size: clamp(11px, 1.1vw, 14px); line-height: 1.1; text-align: center; overflow-wrap: anywhere; color: var(--paper-50); }
 
 /* ---------- Areas of interest ---------- */
 .hz-outer { height: 300vh; }
