@@ -6,9 +6,17 @@ export function Bio() {
   return (
     <section className="bio" aria-label="Bio">
       <div className="bio__text">
-        {a.bio.map((p) => (
-          <p key={p}>{p}</p>
-        ))}
+        {a.bio.map((p) => {
+          // "Let's talk." at the end of a paragraph becomes a link to the contact section.
+          const cue = "Let's talk.";
+          if (!p.endsWith(cue)) return <p key={p}>{p}</p>;
+          return (
+            <p key={p}>
+              {p.slice(0, -cue.length)}
+              <a href="#contact">{cue}</a>
+            </p>
+          );
+        })}
       </div>
       <dl className="facts">
         {a.facts.map((f) => (

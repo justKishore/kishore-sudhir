@@ -15,11 +15,6 @@ export function SkillsOrbit() {
             {s.heading}
           </h2>
         </div>
-        <ul className="sr-only">
-          {s.items.map((k) => (
-            <li key={k.name}>{k.name}</li>
-          ))}
-        </ul>
         <div className="orbit__list" aria-hidden>
           {SETS.map((set) =>
             s.items.map((k) => (
@@ -34,6 +29,12 @@ export function SkillsOrbit() {
           )}
         </div>
       </div>
+      {/* The same skills as plain text, so they can be read and scanned without chasing the vortex. */}
+      <ul className="skills__list">
+        {s.items.map((k) => (
+          <li key={k.name}>{k.name}</li>
+        ))}
+      </ul>
     </section>
   );
 }

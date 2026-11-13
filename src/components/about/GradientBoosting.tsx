@@ -1,23 +1,22 @@
 "use client";
 
-import { useRef } from "react";
+import { useState } from "react";
 import { site } from "@/content/site";
 import { Emph } from "@/components/Emph";
 import { GB_ROUNDS } from "@/lib/gradientBoosting";
 
 const g = site.about.gradientBoosting;
 
-/** Paths, round and MSE are written by the scene loop (useScene). */
+/**
+ * Paths, round and MSE are written by the scene loop (useScene). Above 820px scroll drives the
+ * rounds; below it the button steps through them, starting from round 0 so the first tap moves
+ * forward, and offers "Replay" once the model has finished.
+ */
 export function GradientBoosting() {
-  const wrap = useRef<HTMLElement>(null);
-  const next = () => {
-    const el = wrap.current;
-    if (!el) return;
-    const s = +(el.dataset.step ?? GB_ROUNDS);
-    el.dataset.step = String(s >= GB_ROUNDS ? 0 : s + 1);
-  };
+  const [step, setStep] = useState(0);
+  const done = step >= GB_ROUNDS;
   return (
-    <section ref={wrap} className="gb-outer" data-gbwrap="1" data-step={GB_ROUNDS} aria-labelledby="gb-title">
+    <section className="gb-outer" data-gbwrap="1" data-step={step} aria-labelledby="gb-title">
       <div className="gb-sticky">
         <div className="gb-panel">
           <div className="gb-head">
@@ -35,8 +34,8 @@ export function GradientBoosting() {
               <span className="gb-mse">
                 MSE <span data-gbmse="1" />
               </span>
-              <button type="button" className="gb-tap" onClick={next}>
-                Next round
+              <button type="button" className="gb-tap" onClick={() => setStep(done ? 0 : step + 1)}>
+                {done ? "Replay" : "Next round"}
               </button>
             </div>
           </div>

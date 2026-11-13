@@ -132,7 +132,10 @@ main:focus { outline: none; }
   text-shadow: 0 1px 12px rgba(11, 37, 69, 0.6);
   min-height: var(--tap); display: flex; align-items: center; white-space: nowrap;
 }
-@media (max-width: 420px) { .brand { font-size: 19px; } .pill-nav button { padding: 0 16px; } }
+@media (max-width: 420px) {
+  .site-header { padding-top: 10px; padding-bottom: 10px; } /* smaller band once scrolled */
+  .brand { font-size: 19px; } .pill-nav button { padding: 0 16px; }
+}
 .brand:hover { color: var(--paper-50); }
 /* Liquid glass pill: heavy blur + saturation, a faint light tint, a specular top edge
    and a soft inner glow so it reads as a lens over whatever passes underneath. */
@@ -306,7 +309,7 @@ main:focus { outline: none; }
 .card__body { padding: clamp(20px, 3.4vw, 52px); display: flex; flex-direction: column; justify-content: space-between; gap: 28px; }
 .card__top { display: flex; flex-direction: column; gap: 14px; }
 .card__no { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.12em; color: var(--mist-200); }
-.card__title { margin: 0; font-family: var(--font-serif); font-weight: 400; font-size: var(--fs-h3); line-height: 1.08; }
+.card__title { margin: 0; font-family: var(--font-serif); font-weight: 400; font-size: var(--fs-h3); line-height: 1.08; text-wrap: balance; }
 .card__summary { margin: 0; font-size: clamp(16px, 1.3vw, 19px); color: var(--mist-200); text-wrap: pretty; }
 .card__foot { display: flex; flex-direction: column; gap: 22px; align-items: flex-start; }
 .tags { display: flex; flex-wrap: wrap; gap: 8px; margin: 0; padding: 0; list-style: none; }
@@ -373,13 +376,18 @@ main:focus { outline: none; }
 .gb-legend { font-family: var(--font-mono); font-size: 12px; }
 
 /* ---------- Skills vortex (chips orbit the centre at different depths, after cosmos.so) ---------- */
-/* Chips fade out at the section's top and bottom instead of being sliced by a hard edge. */
-.skills {
-  position: relative; overflow: hidden;
+/* Chips fade out at the orbit's top and bottom instead of being sliced by a hard edge. */
+.skills { position: relative; overflow: hidden; }
+.orbit {
+  position: relative; height: clamp(560px, 100vh, 1000px); perspective: 900px; perspective-origin: 50% 50%;
   -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 14%, #000 86%, transparent 100%);
   mask-image: linear-gradient(to bottom, transparent 0, #000 14%, #000 86%, transparent 100%);
 }
-.orbit { position: relative; height: clamp(560px, 100vh, 1000px); perspective: 900px; perspective-origin: 50% 50%; }
+.skills__list {
+  max-width: 860px; margin: 0 auto; padding: 0 var(--gutter) clamp(56px, 8vw, 104px); list-style: none;
+  display: flex; flex-wrap: wrap; justify-content: center; gap: 10px 22px;
+  font-family: var(--font-mono); font-size: 13px; letter-spacing: 0.04em; color: var(--mist-200);
+}
 .orbit__center {
   position: absolute; inset: 0; z-index: 20; /* above every chip (chips use z 1 to 11) */ display: flex; flex-direction: column; align-items: center; justify-content: center;
   gap: 10px; pointer-events: none; text-align: center;
@@ -433,7 +441,7 @@ main:focus { outline: none; }
 }
 .interest__body { display: flex; flex-direction: column; gap: 12px; }
 .interest h3 { margin: 0; font-family: var(--font-serif); font-style: italic; font-weight: 400; font-size: clamp(28px, 2.8vw, 42px); line-height: 1.1; }
-.interest p { margin: 0; color: var(--mist-200); font-size: 16px; }
+.interest p { margin: 0; color: var(--mist-200); font-size: 16px; min-height: 2lh; } /* two lines, so titles line up across cards */
 @media (max-width: 767px) {
   .hz-outer { height: auto; }
   .hz-sticky { position: relative; height: auto; padding: 96px 0; }
@@ -462,15 +470,19 @@ main:focus { outline: none; }
 .contact__list li:last-child .contact__link { border-bottom: 1px solid var(--border-line); }
 .contact__label { display: inline-block; transition: transform 300ms var(--ease-reveal); }
 @media (hover: hover) and (pointer: fine) {
-  .contact__link:hover { color: var(--steel-400); }
-  .contact__link:hover .contact__label { transform: translateX(10px); }
+  a.contact__link:hover { color: var(--steel-400); }
+  a.contact__link:hover .contact__label { transform: translateX(10px); }
 }
-.contact__arrow { font-family: var(--font-mono); font-size: 16px; }
+.contact__arrow { font-family: var(--font-mono); font-size: 0.7em; color: var(--mist-200); }
+.contact__email { display: block; margin-top: 6px; font-family: var(--font-mono); font-size: 15px; color: var(--mist-200); user-select: all; }
+.contact__link--pending { color: var(--mist-200); }
+.contact__link--pending .placeholder-note { align-self: center; }
 .footer {
   position: relative; max-width: var(--max-w); margin: 0 auto; padding: 24px var(--gutter) 32px;
   border-top: 1px solid rgba(141, 169, 196, 0.25); display: flex; flex-wrap: wrap; gap: 8px 28px; align-items: center; font-size: 15px;
 }
-.footer a { min-height: var(--tap); display: flex; align-items: center; }
+.footer a, .footer__pending { min-height: var(--tap); display: flex; align-items: center; }
+.footer__pending { color: var(--mist-200); }
 .footer .to-top { gap: 6px; margin-left: auto; }
 
 /* ---------- Tab wipe ---------- */

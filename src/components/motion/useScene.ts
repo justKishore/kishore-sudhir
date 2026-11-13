@@ -17,6 +17,8 @@ const MARQUEE_SPEED = 40; // px/s
 const VORTEX_SPEED = 4; // deg/s
 const VORTEX_FAR = -1300;
 const VORTEX_NEAR = 120;
+const PERSPECTIVE = 900; // matches .orbit__list perspective
+const LABEL_MIN_PX = 12; // smallest rendered chip label after perspective shrink
 
 const cl = (v: number) => Math.max(0, Math.min(1, v));
 const ease = (v: number) => 1 - Math.pow(1 - v, 3);
@@ -37,6 +39,15 @@ type Els = {
   chips: HTMLElement[];
   /** Chips actually rendered (the second set is display:none on small screens). */
   fieldChips: HTMLElement[];
+  /** Per-chip constants (depth never changes, so z and perspective scale don't either). */
+  chipZ: number[];
+  chipP: number[];
+  /** Clear ellipse around the title, in px from the orbit centre (before adding chip size). */
+  clearA: number;
+  clearB: number;
+  chipHalf: number;
+  /** Horizontal distance the interests track travels so the last card ends on the gutter. */
+  hzTravel: number;
   gbWrap: HTMLElement | null;
   gbP: SVGPathElement | null;
   gbRound: HTMLElement | null;
@@ -44,6 +55,46 @@ type Els = {
 };
 
 const q = <T extends Element = HTMLElement>(s: string) => Array.from(document.querySelectorAll<T>(s));
+
+/**
+ * Everything about a chip that depends only on its depth is set once here: opacity, stacking,
+ * whether its label shows, and a label size that stays >= 12px after the perspective shrink.
+ * Also measures the title block so the loop can keep chips out of it.
+ */
+function setupChips(els: Els) {
+  const n = els.fieldChips.length;
+  els.chipZ = [];
+  els.chipP = [];
+  const base = Math.min(14, Math.max(11, window.innerWidth * 0.011));
+  els.fieldChips.forEach((ch, j) => {
+    const depth = ((j * 5) % n) / Math.max(1, n - 1); // 0 = far, 1 = near
+    const z = VORTEX_FAR + depth * (VORTEX_NEAR - VORTEX_FAR);
+    const pScale = PERSPECTIVE / (PERSPECTIVE - z);
+    els.chipZ.push(z);
+    els.chipP.push(pScale);
+    ch.style.opacity = (0.45 + 0.55 * Math.pow(depth, 1.2)).toFixed(3);
+    ch.style.zIndex = String(1 + Math.round(depth * 10));
+    ch.toggleAttribute("data-far", depth < 0.35);
+    const label = ch.querySelector<HTMLElement>(".chip__label");
+    if (label) label.style.fontSize = `${Math.max(base, LABEL_MIN_PX / pScale).toFixed(1)}px`;
+  });
+  const orbit = els.orbit;
+  const center = orbit?.querySelector<HTMLElement>(".orbit__center");
+  if (orbit && center && n) {
+    const o = orbit.getBoundingClientRect();
+    let l = Infinity, r = -Infinity, t = Infinity, b = -Infinity;
+    Array.from(center.children).forEach((c) => {
+      const cr = c.getBoundingClientRect();
+      l = Math.min(l, cr.left); r = Math.max(r, cr.right); t = Math.min(t, cr.top); b = Math.max(b, cr.bottom);
+    });
+    const cx = o.left + o.width / 2, cy = o.top + o.height / 2;
+    // Half extents of the title block, plus breathing room. An ellipse through the box corners
+    // needs sqrt(2) times the half extents.
+    els.clearA = Math.max(cx - l, r - cx) * Math.SQRT2 + 16;
+    els.clearB = Math.max(cy - t, b - cy) * Math.SQRT2 + 16;
+    els.chipHalf = els.fieldChips[0].offsetWidth / 2;
+  }
+}
 
 function collect(gb: GB): Els {
   const els: Els = {
@@ -61,12 +112,26 @@ function collect(gb: GB): Els {
     orbit: q("[data-orbit]")[0] ?? null,
     chips: q("[data-chip]"),
     fieldChips: [],
+    chipZ: [],
+    chipP: [],
+    clearA: 0,
+    clearB: 0,
+    chipHalf: 0,
+    hzTravel: 0,
     gbWrap: q("[data-gbwrap]")[0] ?? null,
     gbP: q<SVGPathElement>("[data-gbp]")[0] ?? null,
     gbRound: q("[data-gbround]")[0] ?? null,
     gbMse: q("[data-gbmse]")[0] ?? null,
   };
   els.fieldChips = els.chips.filter((c) => c.offsetParent !== null);
+  setupChips(els);
+  if (els.hz) {
+    const track = els.hz.querySelector<HTMLElement>("[data-hztrack]")!;
+    const last = track.lastElementChild as HTMLElement | null;
+    const pad = parseFloat(getComputedStyle(track).paddingLeft) || 0;
+    const box = track.parentElement!.clientWidth; // excludes the scrollbar, unlike innerWidth
+    els.hzTravel = last ? Math.max(0, last.offsetLeft + last.offsetWidth + pad - box) : 0;
+  }
   q<SVGPathElement>("[data-gbt]").forEach((el) => el.setAttribute("d", gbPath(gb, gb.ys)));
   // Chips show the abbreviation, then swap to the icon once it has loaded.
   q("[data-ico]").forEach((el) => {
@@ -118,6 +183,8 @@ export function useScene(version: string) {
     };
     const onResize = () => (dirty.current = true);
     window.addEventListener("resize", onResize);
+    // The title block is measured for the chip clear zone; re-measure once web fonts are in.
+    document.fonts?.ready.then(() => (dirty.current = true));
 
     const frame = (now: number) => {
       const rm = mql.matches;
@@ -216,7 +283,7 @@ export function useScene(version: string) {
           else {
             const r = E.hz.getBoundingClientRect();
             const p = cl(-r.top / Math.max(1, r.height - vh));
-            track.style.transform = `translate3d(${(-p * Math.max(0, track.scrollWidth - vw)).toFixed(1)}px,0,0)`;
+            track.style.transform = `translate3d(${(-p * E.hzTravel).toFixed(1)}px,0,0)`;
           }
         }
       }
@@ -258,19 +325,26 @@ export function useScene(version: string) {
             // different sides of the circle and on different rings.
             const m = (j * 7) % n;
             const depth = ((j * 5) % n) / Math.max(1, n - 1); // 0 = far, 1 = near
-            const z = VORTEX_FAR + depth * (VORTEX_NEAR - VORTEX_FAR);
+            const z = E.chipZ[j];
+            const ps = E.chipP[j];
             const a = (m / n) * Math.PI * 2 + ((j * 0.618034) % 1) * 0.35 + spin;
-            // Near chips ride the outer rings, far chips the inner ones.
-            const R = 0.68 + 0.5 * depth + 0.12 * ((j * 0.381966) % 1);
-            const x = Math.cos(a) * R * W * 0.5;
-            const y = Math.sin(a) * R * H * 0.62;
-            const rx = Math.sin(a) * 28; // tilt toward the centre, turning with the orbit
-            const ry = -Math.cos(a) * 28;
-            const rz = ((j * 29) % 40) - 20 + Math.cos(a) * 10; // capped so labels stay readable
+            const ca = Math.cos(a);
+            const sa = Math.sin(a);
+            // Near chips ride the outer rings, far chips the inner ones; but never inside the
+            // clear ellipse around the title, measured where the chip actually lands on screen.
+            let R = 0.68 + 0.5 * depth + 0.12 * ((j * 0.381966) % 1);
+            if (E.clearA) {
+              const A = E.clearA + E.chipHalf * ps;
+              const B = E.clearB + E.chipHalf * ps;
+              const k = ps * Math.hypot((ca * W * 0.5) / A, (sa * H * 0.62) / B);
+              R = Math.max(R, 1 / k);
+            }
+            const x = ca * R * W * 0.5;
+            const y = sa * R * H * 0.62;
+            const rx = sa * 28; // tilt toward the centre, turning with the orbit
+            const ry = -ca * 28;
+            const rz = ((j * 29) % 40) - 20 + ca * 10; // capped so labels stay readable
             ch.style.transform = `translate(-50%,-50%) translate3d(${x.toFixed(1)}px,${y.toFixed(1)}px,${z.toFixed(1)}px) rotateZ(${rz.toFixed(1)}deg) rotateX(${rx.toFixed(1)}deg) rotateY(${ry.toFixed(1)}deg)`;
-            ch.style.opacity = (0.45 + 0.55 * Math.pow(depth, 1.2)).toFixed(3);
-            ch.toggleAttribute("data-far", depth < 0.35);
-            ch.style.zIndex = String(1 + Math.round(depth * 10));
           });
         }
       }

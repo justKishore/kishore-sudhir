@@ -42,8 +42,8 @@ export function Site() {
   // Full-screen circle grows from the click point (.8s), view swaps underneath,
   // then the overlay fades out (.55s). Reduced motion: a short cross-fade.
   const switchTab = useCallback(
-    (e: MouseEvent<HTMLElement>, to: Tab) => {
-      e.preventDefault();
+    (e: MouseEvent<HTMLElement> | null, to: Tab) => {
+      e?.preventDefault();
       if (to === tab) return toTop();
       const ov = wipe.current;
       if (wiping.current || !ov) return;
@@ -76,7 +76,8 @@ export function Site() {
           window.scrollTo(0, 0);
           scene.current.restartHero(250);
           try {
-            history.replaceState(null, "", `#${to}`);
+            // A real history entry, so Back and Forward move between the views.
+            if (window.location.hash !== `#${to}`) history.pushState(null, "", `#${to}`);
           } catch {}
           requestAnimationFrame(() => main.current?.focus({ preventScroll: true }));
           setTimeout(
@@ -97,6 +98,16 @@ export function Site() {
     },
     [tab, toTop, scene],
   );
+
+  // Back/Forward, or a typed #work / #about, switch the view too (other hashes like #contact don't).
+  useEffect(() => {
+    const onHash = () => {
+      const h = window.location.hash.slice(1);
+      if ((h === "work" || h === "about") && h !== tab) switchTab(null, h);
+    };
+    window.addEventListener("hashchange", onHash);
+    return () => window.removeEventListener("hashchange", onHash);
+  }, [tab, switchTab]);
 
   return (
     <>
