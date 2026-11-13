@@ -10,7 +10,7 @@
     },
     "marqueeRow1": ["AI Adoption", "Automation", "Data Analytics", "Data Engineering", "Dashboards", "Statistical Analytics"],
     "marqueeRow2": ["Sport Analytics", "Is AI Truly Intelligent?", "Conscious AI", "Operations Improvement"],
-    "statement": { "label": "How I work", "text": "It starts with an idea. Then a question: what are we solving for? It's the most important thing!" },
+    "statement": { "label": "How I work", "text": "It starts with an idea. Then a question: what are we solving for? It's the most important thing." },
     "stat": {
       "beforeLabel": "Time to send a quote, before", "before": "6 to 7 weeks",
       "afterLabel": "After", "after": "Same day.",

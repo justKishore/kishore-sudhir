@@ -194,22 +194,21 @@ export function useScene(version: string) {
           same.style.transform = `translate3d(0,${((1 - qq) * 28).toFixed(1)}px,0)`;
         }
         // Card stack: the card underneath scales to .94 and darkens as the next one covers it.
-        E.cards.forEach((c, i) => {
-          const shade = c.querySelector<HTMLElement>("[data-shade]")!;
-          if (vw < 820) {
+        // Read every position first, then write, so the browser lays out once per frame.
+        if (vw < 820) {
+          E.cards.forEach((c) => {
             c.style.transform = "none";
-            shade.style.opacity = "0";
-            return;
-          }
-          const nx = E.cards[i + 1];
-          let p = 0;
-          if (nx) {
-            const ch = c.offsetHeight;
-            p = cl((c.getBoundingClientRect().top + ch - nx.getBoundingClientRect().top) / ch);
-          }
-          c.style.transform = rm ? "none" : `scale(${(1 - 0.06 * p).toFixed(4)})`;
-          shade.style.opacity = (p * 0.5).toFixed(3);
-        });
+            c.querySelector<HTMLElement>("[data-shade]")!.style.opacity = "0";
+          });
+        } else {
+          const tops = E.cards.map((c) => c.getBoundingClientRect().top);
+          const hs = E.cards.map((c) => c.offsetHeight);
+          E.cards.forEach((c, i) => {
+            const p = i + 1 < E.cards.length ? cl((tops[i] + hs[i] - tops[i + 1]) / hs[i]) : 0;
+            c.style.transform = rm ? "none" : `scale(${(1 - 0.06 * p).toFixed(4)})`;
+            c.querySelector<HTMLElement>("[data-shade]")!.style.opacity = (p * 0.5).toFixed(3);
+          });
+        }
         // Interests: vertical scroll drives the horizontal track.
         if (E.hz) {
           const track = E.hz.querySelector<HTMLElement>("[data-hztrack]")!;
@@ -269,7 +268,8 @@ export function useScene(version: string) {
             const ry = -Math.cos(a) * 28;
             const rz = ((j * 29) % 40) - 20 + Math.cos(a) * 10; // capped so labels stay readable
             ch.style.transform = `translate(-50%,-50%) translate3d(${x.toFixed(1)}px,${y.toFixed(1)}px,${z.toFixed(1)}px) rotateZ(${rz.toFixed(1)}deg) rotateX(${rx.toFixed(1)}deg) rotateY(${ry.toFixed(1)}deg)`;
-            ch.style.opacity = (0.3 + 0.7 * Math.pow(depth, 1.2)).toFixed(3);
+            ch.style.opacity = (0.45 + 0.55 * Math.pow(depth, 1.2)).toFixed(3);
+            ch.toggleAttribute("data-far", depth < 0.35);
             ch.style.zIndex = String(1 + Math.round(depth * 10));
           });
         }

@@ -20,7 +20,7 @@ export function Contact({ onTop }: { onTop: (e: MouseEvent<HTMLAnchorElement>) =
             {c.links.map((l) => (
               <li key={l.label}>
                 <a className="contact__link" href={href(l.href)}>
-                  {l.label} <span className="contact__arrow" aria-hidden>↗</span>
+                  <span className="contact__label">{l.label}</span> <span className="contact__arrow" aria-hidden>↗</span>
                 </a>
               </li>
             ))}

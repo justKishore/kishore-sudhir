@@ -70,7 +70,7 @@ body {
   overflow-x: clip;
 }
 a { color: var(--paper-50); text-decoration-color: rgba(141, 169, 196, 0.6); text-underline-offset: 4px; }
-a:hover { color: var(--mist-200); }
+@media (hover: hover) and (pointer: fine) { a:hover { color: var(--mist-200); } }
 button { font-family: inherit; }
 img { display: block; max-width: 100%; }
 :focus-visible { outline: 2px solid var(--paper-50); outline-offset: 3px; }
@@ -109,25 +109,66 @@ main:focus { outline: none; }
   display: flex; align-items: center; justify-content: space-between; gap: 16px;
   padding: 14px var(--gutter);
 }
+/* Once scrolled, page content slides under a solid navy layer instead of colliding with the
+   name and nav. Fully opaque behind the header, then a 14px feather below it, no hard line. */
+.site-header::before {
+  content: ""; position: absolute; left: 0; right: 0; top: 0; bottom: -14px; z-index: -1; pointer-events: none;
+  background: linear-gradient(to bottom, var(--navy-950) 0, var(--navy-950) calc(100% - 14px), rgba(11, 37, 69, 0) 100%);
+  opacity: 0; transition: opacity 220ms ease-out;
+}
+.site-header[data-scrolled]::before { opacity: 1; }
+@media (prefers-reduced-motion: reduce) { .site-header::before { transition: none; } }
+.skip-link {
+  position: absolute; left: var(--gutter); top: 14px; z-index: 1;
+  min-height: var(--tap); padding: 0 20px; display: flex; align-items: center;
+  border-radius: var(--radius-pill); background: var(--paper-50); color: var(--navy-950);
+  font-size: 15px; font-weight: 500; text-decoration: none;
+  transform: translateY(-160%); transition: transform 160ms ease-out;
+}
+.skip-link:focus-visible { transform: none; }
 .brand {
   font-family: var(--font-serif); font-style: italic; font-size: 22px;
   color: var(--paper-50); text-decoration: none;
   text-shadow: 0 1px 12px rgba(11, 37, 69, 0.6);
-  min-height: var(--tap); display: flex; align-items: center;
+  min-height: var(--tap); display: flex; align-items: center; white-space: nowrap;
 }
+@media (max-width: 420px) { .brand { font-size: 19px; } .pill-nav button { padding: 0 16px; } }
 .brand:hover { color: var(--paper-50); }
+/* Liquid glass pill: heavy blur + saturation, a faint light tint, a specular top edge
+   and a soft inner glow so it reads as a lens over whatever passes underneath. */
 .pill-nav {
+  position: relative; isolation: isolate;
   display: flex; gap: 4px; padding: 4px; border-radius: var(--radius-pill);
-  background: rgba(11, 37, 69, 0.55); border: 1px solid rgba(141, 169, 196, 0.28);
-  backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+  background:
+    linear-gradient(180deg, rgba(238, 244, 237, 0.16) 0%, rgba(238, 244, 237, 0.04) 55%, rgba(238, 244, 237, 0.08) 100%),
+    rgba(11, 37, 69, 0.28);
+  border: 1px solid rgba(238, 244, 237, 0.22);
+  -webkit-backdrop-filter: blur(22px) saturate(1.8) brightness(1.05);
+  backdrop-filter: blur(22px) saturate(1.8) brightness(1.05);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.35),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.08),
+    inset 0 0 18px rgba(238, 244, 237, 0.06),
+    0 8px 28px rgba(11, 37, 69, 0.35);
 }
 .pill-nav button {
+  position: relative;
   min-height: var(--tap); padding: 0 20px; border: 0; border-radius: var(--radius-pill);
   font-size: 15px; font-weight: 500; cursor: pointer;
-  transition: background 0.3s, color 0.3s;
-  background: transparent; color: var(--paper-50);
+  transition: background 0.3s, color 0.3s, box-shadow 0.3s, transform 120ms var(--ease-reveal);
+  background: transparent; color: rgba(238, 244, 237, 0.82);
 }
-.pill-nav button[aria-current="page"] { background: var(--paper-50); color: var(--navy-950); }
+@media (hover: hover) and (pointer: fine) { .pill-nav button:hover { color: var(--paper-50); } }
+.pill-nav button[aria-current="page"] {
+  color: var(--paper-50);
+  background: linear-gradient(180deg, rgba(238, 244, 237, 0.32) 0%, rgba(238, 244, 237, 0.14) 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.5),
+    inset 0 -1px 1px rgba(255, 255, 255, 0.12),
+    0 2px 10px rgba(11, 37, 69, 0.25);
+}
+.pill-nav button:active { transform: scale(0.96); }
+
 
 /* ---------- Hero (Work + About) ---------- */
 .hero {
@@ -163,7 +204,7 @@ main:focus { outline: none; }
 .status {
   max-width: 440px; padding: 18px 22px; border-radius: 20px;
   background: var(--glass-bg); border: 1px solid var(--glass-border);
-  backdrop-filter: blur(18px) saturate(1.2); -webkit-backdrop-filter: blur(18px) saturate(1.2);
+  -webkit-backdrop-filter: blur(18px) saturate(1.2); backdrop-filter: blur(18px) saturate(1.2);
   box-shadow: 0 20px 50px rgba(11, 37, 69, 0.35);
 }
 .status__title { display: flex; align-items: center; gap: 12px; font-weight: 500; font-size: 17px; }
@@ -236,9 +277,10 @@ main:focus { outline: none; }
 .cta {
   display: flex; align-items: center; gap: 10px; min-height: 56px; padding: 0 32px; border-radius: var(--radius-pill);
   background: var(--paper-50); color: var(--navy-950); font-size: 17px; font-weight: 600; text-decoration: none;
-  box-shadow: var(--shadow-glow); transition: background 0.3s;
+  box-shadow: var(--shadow-glow); transition: background 0.3s, transform 160ms var(--ease-reveal);
 }
-.cta:hover { background: var(--mist-200); color: var(--navy-950); }
+@media (hover: hover) and (pointer: fine) { .cta:hover { background: var(--mist-200); color: var(--navy-950); } }
+.cta:active { transform: scale(0.97); }
 .mono { font-family: var(--font-mono); }
 
 /* ---------- Selected work ---------- */
@@ -320,7 +362,9 @@ main:focus { outline: none; }
 .gb-tap {
   align-items: center; min-height: var(--tap); padding: 0 18px; border-radius: var(--radius-pill);
   border: 1px solid rgba(238, 244, 237, 0.6); background: transparent; color: var(--paper-50); font-size: 14px; cursor: pointer;
+  transition: transform 120ms var(--ease-reveal);
 }
+.gb-tap:active { transform: scale(0.96); }
 .gb-svg { display: block; width: 100%; height: auto; max-height: 50vh; }
 .gb-axis { stroke: rgba(141, 169, 196, 0.3); stroke-width: 1; }
 .gb-target { fill: none; stroke: var(--steel-400); stroke-width: 1.25; }
@@ -329,10 +373,15 @@ main:focus { outline: none; }
 .gb-legend { font-family: var(--font-mono); font-size: 12px; }
 
 /* ---------- Skills vortex (chips orbit the centre at different depths, after cosmos.so) ---------- */
-.skills { position: relative; overflow: hidden; }
+/* Chips fade out at the section's top and bottom instead of being sliced by a hard edge. */
+.skills {
+  position: relative; overflow: hidden;
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 14%, #000 86%, transparent 100%);
+  mask-image: linear-gradient(to bottom, transparent 0, #000 14%, #000 86%, transparent 100%);
+}
 .orbit { position: relative; height: clamp(560px, 100vh, 1000px); perspective: 900px; perspective-origin: 50% 50%; }
 .orbit__center {
-  position: absolute; inset: 0; z-index: 5; display: flex; flex-direction: column; align-items: center; justify-content: center;
+  position: absolute; inset: 0; z-index: 20; /* above every chip (chips use z 1 to 11) */ display: flex; flex-direction: column; align-items: center; justify-content: center;
   gap: 10px; pointer-events: none; text-align: center;
 }
 .orbit__title {
@@ -359,6 +408,7 @@ main:focus { outline: none; }
   position: absolute; inset: 0; opacity: 0; background-repeat: no-repeat; background-position: 50% 50%;
   background-size: contain; filter: brightness(0) invert(1);
 }
+.chip[data-far] .chip__label { display: none; } /* far chips are too small and faint to read */
 .chip__label { font-family: var(--font-mono); font-size: clamp(11px, 1.1vw, 14px); line-height: 1.1; white-space: nowrap; color: var(--paper-50); }
 
 /* ---------- Areas of interest ---------- */
@@ -375,8 +425,10 @@ main:focus { outline: none; }
 .drift--2 { right: -15%; top: 30%; width: 60%; height: 70%; background: radial-gradient(closest-side, rgba(19, 64, 116, 0.9), rgba(19, 64, 116, 0)); }
 .interest {
   min-height: clamp(240px, 38vh, 380px); padding: clamp(22px, 2.6vw, 36px); border-radius: var(--radius-card);
-  background: rgba(238, 244, 237, 0.07); border: 1px solid rgba(238, 244, 237, 0.2);
-  backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); box-shadow: 0 24px 60px rgba(11, 37, 69, 0.4);
+  /* No backdrop blur: these cards slide over moving glow blobs every scroll frame, and the blur
+     tripled frame time in testing. The backdrop is soft gradients, so a slightly denser fill reads the same. */
+  background: rgba(238, 244, 237, 0.09); border: 1px solid rgba(238, 244, 237, 0.2);
+  box-shadow: 0 24px 60px rgba(11, 37, 69, 0.4);
   display: flex; flex-direction: column; justify-content: space-between; gap: 24px;
 }
 .interest__body { display: flex; flex-direction: column; gap: 12px; }
@@ -405,10 +457,14 @@ main:focus { outline: none; }
   display: flex; align-items: baseline; justify-content: space-between; gap: 16px; min-height: 64px; padding: 16px 0;
   border-top: 1px solid var(--border-line); text-decoration: none; color: var(--paper-50);
   font-family: var(--font-serif); font-size: clamp(24px, 2.6vw, 36px); line-height: 1.2;
-  transition: color 0.3s, padding 0.3s;
+  transition: color 0.3s ease;
 }
 .contact__list li:last-child .contact__link { border-bottom: 1px solid var(--border-line); }
-.contact__link:hover { color: var(--steel-400); padding-left: 10px; }
+.contact__label { display: inline-block; transition: transform 300ms var(--ease-reveal); }
+@media (hover: hover) and (pointer: fine) {
+  .contact__link:hover { color: var(--steel-400); }
+  .contact__link:hover .contact__label { transform: translateX(10px); }
+}
 .contact__arrow { font-family: var(--font-mono); font-size: 16px; }
 .footer {
   position: relative; max-width: var(--max-w); margin: 0 auto; padding: 24px var(--gutter) 32px;
@@ -439,5 +495,8 @@ main:focus { outline: none; }
   .hz-track { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; will-change: auto; }
   .hz-card { width: auto; }
   .card, .chip, .marquee__track { will-change: auto; }
-  .contact__link { transition: none; }
+  .contact__label { transition: none; }
+  .contact__link:hover .contact__label { transform: none; }
+  .cta:active { transform: scale(0.99); }
+  .pill-nav button:active, .gb-tap:active { transform: scale(0.98); }
 }
