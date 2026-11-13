@@ -12,7 +12,11 @@ import { buildGB, gbModelAt, gbPath, GB_ROUNDS, type GB } from "@/lib/gradientBo
  */
 
 const MARQUEE_SPEED = 40; // px/s
-const ORBIT_SPEED = 6; // deg/s
+// Skills vortex (after cosmos.so): chips sit at fixed depths on concentric rings and the
+// whole field turns counter-clockwise around the centre. CSS px, perspective 900px.
+const VORTEX_SPEED = 4; // deg/s
+const VORTEX_FAR = -1300;
+const VORTEX_NEAR = 120;
 
 const cl = (v: number) => Math.max(0, Math.min(1, v));
 const ease = (v: number) => 1 - Math.pow(1 - v, 3);
@@ -31,6 +35,8 @@ type Els = {
   drift: HTMLElement[];
   orbit: HTMLElement | null;
   chips: HTMLElement[];
+  /** Chips actually rendered (the second set is display:none on small screens). */
+  fieldChips: HTMLElement[];
   gbWrap: HTMLElement | null;
   gbP: SVGPathElement | null;
   gbRound: HTMLElement | null;
@@ -54,11 +60,13 @@ function collect(gb: GB): Els {
     drift: q("[data-drift]"),
     orbit: q("[data-orbit]")[0] ?? null,
     chips: q("[data-chip]"),
+    fieldChips: [],
     gbWrap: q("[data-gbwrap]")[0] ?? null,
     gbP: q<SVGPathElement>("[data-gbp]")[0] ?? null,
     gbRound: q("[data-gbround]")[0] ?? null,
     gbMse: q("[data-gbmse]")[0] ?? null,
   };
+  els.fieldChips = els.chips.filter((c) => c.offsetParent !== null);
   q<SVGPathElement>("[data-gbt]").forEach((el) => el.setAttribute("d", gbPath(gb, gb.ys)));
   // Chips show the abbreviation, then swap to the icon once it has loaded.
   q("[data-ico]").forEach((el) => {
@@ -235,26 +243,36 @@ export function useScene(version: string) {
           : `translate3d(${(Math.sin(t / 7000 + i * 2) * 40).toFixed(1)}px,${(Math.cos(t / 9000 + i) * 26).toFixed(1)}px,0)`;
       });
 
-      // Skills orbit: golden-angle spacing, 6deg/s plus scroll.
-      if (E.orbit && E.chips.length) {
-        const OW = E.orbit.offsetWidth;
-        const OH = E.orbit.offsetHeight;
-        const tt = rm ? 0 : t;
-        const spin = rm ? 0 : (((t / 1000) * ORBIT_SPEED * Math.PI) / 180) + sy * 0.0012;
-        E.chips.forEach((ch, i) => {
-          const a = i * 2.39996 + spin;
-          const z = Math.sin(a);
-          const d = (z + 1) / 2;
-          const side = i % 2 ? 1 : -1;
-          const x = Math.cos(a) * OW * (0.24 + (0.13 * ((i * 7) % 5)) / 4);
-          const y = side * (0.23 + (0.2 * Math.floor(i / 2)) / 6) * OH + Math.sin(tt / 3100 + i * 1.7) * 10;
-          const rx = Math.sin(tt / 2600 + i) * 24 + side * -10;
-          const ry = -Math.cos(a) * 38;
-          const rz = Math.sin(tt / 3400 + i * 2) * 12 + ((i % 3) - 1) * 10;
-          ch.style.transform = `translate(-50%,-50%) translate3d(${x.toFixed(1)}px,${y.toFixed(1)}px,0) scale(${(0.76 + 0.28 * d).toFixed(3)}) rotateX(${rx.toFixed(1)}deg) rotateY(${ry.toFixed(1)}deg) rotateZ(${rz.toFixed(1)}deg)`;
-          ch.style.opacity = (0.55 + 0.45 * d).toFixed(3);
-          ch.style.zIndex = z > 0 ? "3" : "1";
-        });
+      // Skills vortex (after cosmos.so): every chip orbits the centre on its own ring, counter-
+      // clockwise. Depth sets the ring: far chips are small, faint and close to the title, near
+      // chips are large and out by the edges. Each chip is tilted to face the centre and the tilt
+      // turns with it. Scroll nudges the spin. Reduced motion: one frozen frame.
+      if (E.orbit && E.fieldChips.length) {
+        const r = E.orbit.getBoundingClientRect();
+        if (wasDirty || (r.bottom > 0 && r.top < vh)) {
+          const W = r.width;
+          const H = r.height;
+          const n = E.fieldChips.length;
+          const spin = rm ? 0 : -(((t / 1000) * VORTEX_SPEED * Math.PI) / 180 + sy * 0.0008);
+          E.fieldChips.forEach((ch, j) => {
+            // Coprime strides spread angle and depth evenly, so copies of a skill land on
+            // different sides of the circle and on different rings.
+            const m = (j * 7) % n;
+            const depth = ((j * 5) % n) / Math.max(1, n - 1); // 0 = far, 1 = near
+            const z = VORTEX_FAR + depth * (VORTEX_NEAR - VORTEX_FAR);
+            const a = (m / n) * Math.PI * 2 + ((j * 0.618034) % 1) * 0.35 + spin;
+            // Near chips ride the outer rings, far chips the inner ones.
+            const R = 0.68 + 0.5 * depth + 0.12 * ((j * 0.381966) % 1);
+            const x = Math.cos(a) * R * W * 0.5;
+            const y = Math.sin(a) * R * H * 0.62;
+            const rx = Math.sin(a) * 28; // tilt toward the centre, turning with the orbit
+            const ry = -Math.cos(a) * 28;
+            const rz = ((j * 29) % 40) - 20 + Math.cos(a) * 10; // capped so labels stay readable
+            ch.style.transform = `translate(-50%,-50%) translate3d(${x.toFixed(1)}px,${y.toFixed(1)}px,${z.toFixed(1)}px) rotateZ(${rz.toFixed(1)}deg) rotateX(${rx.toFixed(1)}deg) rotateY(${ry.toFixed(1)}deg)`;
+            ch.style.opacity = (0.3 + 0.7 * Math.pow(depth, 1.2)).toFixed(3);
+            ch.style.zIndex = String(1 + Math.round(depth * 10));
+          });
+        }
       }
 
       // Gradient boosting: scroll scrubs rounds; under 820px the button steps (eased).

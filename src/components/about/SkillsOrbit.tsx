@@ -1,7 +1,10 @@
 import { site, iconSrc } from "@/content/site";
 
 const s = site.about.skills;
+// Three copies of every chip so the vortex fills the screen on desktop; the third set hides under 820px.
+const SETS = [0, 1, 2];
 
+/** Chips orbit the centre at different depths, after cosmos.so (positions set by useScene). */
 export function SkillsOrbit() {
   return (
     <section className="skills" aria-labelledby="skills-title">
@@ -12,19 +15,24 @@ export function SkillsOrbit() {
             {s.heading}
           </h2>
         </div>
-        <ul className="orbit__list">
+        <ul className="sr-only">
           {s.items.map((k) => (
-            <li key={k.name} data-chip="1" className="chip">
-              <span className="chip__mark" aria-hidden>
-                <span>{k.abbr}</span>
-                <span data-ico={iconSrc(k.icon)} className="chip__ico" />
-              </span>
-              <span className="chip__label">
-                {k.name === k.abbr ? <span className="sr-only">{k.name}</span> : k.name}
-              </span>
-            </li>
+            <li key={k.name}>{k.name}</li>
           ))}
         </ul>
+        <div className="orbit__list" aria-hidden>
+          {SETS.map((set) =>
+            s.items.map((k) => (
+              <div key={`${set}-${k.name}`} data-chip="1" data-set={set} className="chip">
+                <span className="chip__mark">
+                  <span>{k.abbr}</span>
+                  <span data-ico={iconSrc(k.icon)} className="chip__ico" />
+                </span>
+                {k.name !== k.abbr && <span className="chip__label">{k.name}</span>}
+              </div>
+            )),
+          )}
+        </div>
       </div>
     </section>
   );

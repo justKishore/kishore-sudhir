@@ -32,7 +32,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <style>{`[data-reveal]{transform:none!important;opacity:1!important}.statement__word{opacity:1}.stat__strike{transform:none}.stat__same{opacity:1}`}</style>
         </noscript>
       </head>
-      <body>{children}</body>
+      {/* Extensions such as Grammarly add attributes to <body> before hydration. This only
+          ignores attribute differences on <body> itself, not anything inside it. */}
+      <body suppressHydrationWarning>{children}</body>
     </html>
   );
 }
